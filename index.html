@@ -3,1366 +3,1187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HF Solutions — Diagnóstico Editorial + ICP + Estrategia</title>
-    <!-- Google Fonts for High-End Editorial Presentation -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>HF Solutions - Estratégica Editorial del Proyecto</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Custom Configuration -->
+    <!-- Google Fonts: Inter & JetBrains Mono for clean, tech aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
                     colors: {
-                        navy: {
-                            950: '#070C19',
-                            900: '#0B132B',
-                            800: '#1C2541',
-                            700: '#3A506B',
-                        },
-                        gold: {
-                            50: '#FAF6F0',
-                            100: '#F3EAD8',
-                            500: '#C5A880', /* Sophisticated Champagne Gold */
-                            600: '#A89279',
-                        },
-                        slate: {
-                            50: '#F8FAFC',
-                            100: '#F1F5F9',
-                            200: '#E2E8F0',
-                            300: '#CBD5E1',
-                            500: '#64748B',
-                            800: '#1E293B',
-                            900: '#0F172A',
-                        },
-                        executive: {
-                            success: '#14532D', /* Forest Green */
-                            successBg: '#F0FDF4',
-                            warning: '#78350F', /* Warm Amber */
-                            warningBg: '#FFFBEB',
-                            error: '#7F1D1D', /* Deep Crimson */
-                            errorBg: '#FEF2F2'
+                        brand: {
+                            black: '#000000',
+                            dark: '#050506',
+                            darkGray: '#101012',
+                            gray: '#1E1E21',
+                            lightGray: '#A1A1AA',
+                            neonGreen: '#00FF87',
+                            neonCyan: '#00F0FF',
+                            neonPurple: '#BF5AF2',
+                            neonWhite: '#FFFFFF',
                         }
                     },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Lora"', 'serif'],
+                    boxShadow: {
+                        'neon-glow-white': '0 0 15px rgba(255, 255, 255, 0.15)',
+                        'neon-glow-green': '0 0 20px rgba(0, 255, 135, 0.25)',
+                        'neon-glow-cyan': '0 0 20px rgba(0, 240, 255, 0.25)',
+                        'neon-glow-purple': '0 0 20px rgba(191, 90, 242, 0.25)',
                     }
                 }
             }
         }
     </script>
     <style>
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
         }
-        ::-webkit-scrollbar-track {
-            background: #F8FAFC;
+        /* Custom Neon Borders and Animations */
+        .neon-border-white {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #CBD5E1;
-            border-radius: 3px;
+        .neon-border-white:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94A3B8;
+        .neon-border-green {
+            border: 1px solid rgba(0, 255, 135, 0.2);
+            transition: all 0.3s ease;
         }
-        .active-nav-item {
-            color: #FFFFFF !important;
-            background-color: rgba(197, 168, 128, 0.12);
-            border-left: 3px solid #C5A880;
+        .neon-border-green:hover {
+            border-color: #00FF87;
+            box-shadow: 0 0 15px rgba(0, 255, 135, 0.3);
         }
-        
-        /* Custom list styling to avoid emojis */
-        .executive-bullet {
-            position: relative;
-            padding-left: 1.5rem;
+        .neon-border-cyan {
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s ease;
         }
-        .executive-bullet::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.65rem;
-            width: 5px;
-            height: 5px;
-            background-color: #C5A880;
-            border-radius: 50%;
+        .neon-border-cyan:hover {
+            border-color: #00F0FF;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+        .neon-border-purple {
+            border: 1px solid rgba(191, 90, 242, 0.2);
+            transition: all 0.3s ease;
+        }
+        .neon-border-purple:hover {
+            border-color: #BF5AF2;
+            box-shadow: 0 0 15px rgba(191, 90, 242, 0.3);
         }
 
-        .executive-bullet-dark {
-            position: relative;
-            padding-left: 1.5rem;
+        /* Accordion transition utility */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
         }
-        .executive-bullet-dark::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.65rem;
-            width: 5px;
-            height: 5px;
-            background-color: #0B132B;
-            border-radius: 50%;
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            opacity: 1;
+        }
+        .accordion-trigger i {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-trigger i {
+            transform: rotate(180deg);
+            color: #00FF87;
+        }
+        .accordion-item.active {
+            border-color: rgba(0, 255, 135, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 135, 0.1);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen">
+<body class="text-zinc-100 selection:bg-white selection:text-black min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- Mobile Header -->
-    <header class="lg:hidden bg-navy-950 text-white px-6 py-4 sticky top-0 z-50 flex justify-between items-center border-b border-navy-800 shadow-md">
-        <!-- Dedicated Space for MTI Logo (Mobile) -->
-        <div class="h-10 w-28 flex items-center justify-start">
-            <img src="mti-logo.png" alt="" class="max-h-full max-w-full object-contain">
+    <!-- TOP HEADER LOGOS BAR (ESTRICTAMENTE EXTREMO IZQUIERDO Y DERECHO - LOGOS MEDIANOS) -->
+    <header class="w-full bg-black/95 backdrop-blur-md border-b border-zinc-900 sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <!-- Logo Izquierdo (Mediano) -->
+            <div class="flex items-center">
+                <img src="LogoHF.png" alt="LogoHF.png" class="h-14 md:h-16 w-auto object-contain max-w-[180px] md:max-w-[240px] transition-transform duration-300 hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <!-- Fallback en caso de que falte la imagen -->
+                <div class="hidden items-center space-x-2 bg-zinc-900 border border-zinc-800/80 px-4 py-2.5 rounded-lg text-xs font-mono tracking-widest text-zinc-300">
+                    <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                    <span>LogoHF.png</span>
+                </div>
+            </div>
+
+            <!-- Navegación Central (Esqueleto Ejecutivo con Efecto de Foco) -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase font-mono font-medium">
+                <a href="#home" class="text-zinc-400 hover:text-white hover:shadow-[0_2px_0_0_#FFFFFF] pb-1 transition-all duration-200">HOME</a>
+                <a href="#icp" class="text-zinc-400 hover:text-white hover:shadow-[0_2px_0_0_#FFFFFF] pb-1 transition-all duration-200">ICP</a>
+                <a href="#arquitectura" class="text-zinc-400 hover:text-white hover:shadow-[0_2px_0_0_#FFFFFF] pb-1 transition-all duration-200">ARQUITECTURA</a>
+                <!-- Nuevo menú "Plan de contenido" -->
+                <a href="#plan" class="text-zinc-400 hover:text-white hover:shadow-[0_2px_0_0_#FFFFFF] pb-1 transition-all duration-200">PLAN DE CONTENIDO</a>
+                <a href="#proceso" class="text-zinc-400 hover:text-white hover:shadow-[0_2px_0_0_#FFFFFF] pb-1 transition-all duration-200">PROCESO</a>
+            </nav>
+
+            <!-- Logo Derecho (Mediano) -->
+            <div class="flex items-center">
+                <img src="mti-logo.png" alt="mti-logo.png" class="h-14 md:h-16 w-auto object-contain max-w-[180px] md:max-w-[240px] transition-transform duration-300 hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <!-- Fallback en caso de que falte la imagen -->
+                <div class="hidden items-center space-x-2 bg-zinc-900 border border-zinc-800/80 px-4 py-2.5 rounded-lg text-xs font-mono tracking-widest text-zinc-300">
+                    <span>mti-logo.png</span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-zinc-500"></span>
+                </div>
+            </div>
         </div>
-        <button id="mobileMenuButton" class="text-white hover:text-gold-500 focus:outline-none" aria-label="Abrir Menú">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-        </button>
     </header>
 
-    <div class="flex relative min-h-screen">
-        
-        <!-- Sidebar Navigation -->
-        <aside id="sidebarMenu" class="fixed inset-y-0 left-0 z-40 w-80 bg-navy-950 text-white border-r border-navy-900 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
-            
-            <div class="p-8 border-b border-navy-900 flex flex-col gap-5">
-                <!-- Dedicated Space for MTI Logo (No visual text inside) -->
-                <div class="h-12 w-44 flex items-center justify-start">
-                    <img src="mti-logo.png" alt="" class="max-h-full max-w-full object-contain">
-                </div>
-                
-                <div>
-                    <span class="font-serif text-xl font-bold tracking-widest text-gold-500 block">HF SOLUTIONS</span>
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mt-1 block font-semibold">Centro Editorial Estratégico</span>
-                </div>
-            </div>
-            
-            <nav class="flex-1 overflow-y-auto px-4 py-6">
-                <ul class="space-y-1.5" id="navMenuList">
-                    <li class="sidebar-item"><a href="#percepcion-cliente" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">01</span> Percepción Cliente</a></li>
-                    <li class="sidebar-item"><a href="#percepcion-equipo" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">02</span> Percepción Equipo</a></li>
-                    <li class="sidebar-item"><a href="#icp-actual" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">03</span> ICP Actual</a></li>
-                    <li class="sidebar-item"><a href="#icp-detallado" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">04</span> ICP Detallado</a></li>
-                    <li class="sidebar-item"><a href="#alineacion-contenido" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">05</span> Alineación Contenido</a></li>
-                    <li class="sidebar-item"><a href="#pilares" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">06</span> Pilares</a></li>
-                    <li class="sidebar-item"><a href="#tono-comunicacional" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">07</span> Tono Comunicacional</a></li>
-                    <li class="sidebar-item"><a href="#matriz-editorial" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">08</span> Matriz Editorial</a></li>
-                    <li class="sidebar-item"><a href="#propuesta-julio" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">09</span> Propuesta Julio</a></li>
-                    <li class="sidebar-item"><a href="#plan-b-operativo" class="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white rounded transition-all duration-200"><span class="text-gold-500 font-mono text-xs">10</span> Plan B Operativo</a></li>
-                </ul>
-            </nav>
-            
-            <div class="p-6 border-t border-navy-900 text-[9px] text-slate-500 tracking-wider font-semibold uppercase">
-                V1.0 - CONFIDENCIAL INTERNO
-            </div>
-        </aside>
-
-        <!-- Main Content Area -->
-        <main class="flex-1 lg:ml-80 min-h-screen flex flex-col">
-            
-            <!-- Sticky Navigation Top Bar -->
-            <div class="hidden lg:flex sticky top-0 bg-white/95 backdrop-blur-md z-30 px-12 py-5 justify-between items-center border-b border-slate-100 shadow-sm">
-                <div>
-                    <span class="text-xs uppercase tracking-widest text-slate-500 font-bold">Documento de Apoyo / Centro Estratégico Interno</span>
-                </div>
-                <div class="bg-navy-900 text-white text-[9px] tracking-widest uppercase font-extrabold px-3.5 py-2 rounded">
-                    Socio Consultivo Tier-1
-                </div>
-            </div>
-
-            <!-- Hero Section -->
-            <section class="relative bg-navy-950 text-white px-6 py-16 md:px-16 md:py-24 border-t-4 border-gold-500 overflow-hidden shadow-inner">
-                <div class="absolute inset-0 bg-gradient-to-tr from-navy-950 via-navy-900 to-navy-950 opacity-90 z-0"></div>
-                <div class="absolute right-0 bottom-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl z-0 pointer-events-none"></div>
-                
-                <div class="relative z-10 max-w-4xl">
-                    <div class="inline-flex items-center gap-2 border border-gold-500/30 bg-gold-500/10 px-3.5 py-1.5 rounded text-xs font-bold uppercase tracking-widest text-gold-500 mb-6">
-                        Documento de Apoyo
-                    </div>
-                    
-                    <h1 class="font-serif text-3.5xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-4">
-                        HF Solutions <br>
-                        <span class="text-gold-500 font-light italic">Diagnóstico Editorial + ICP + Estrategia</span>
-                    </h1>
-                    
-                    <p class="text-slate-300 font-sans text-base md:text-lg max-w-2xl font-light leading-relaxed">
-                        Centro estratégico interno unificado para alinear cliente y equipo, justificar razonamiento editorial y maximizar el impacto en tomadores de decisión Tier-1.
-                    </p>
-                </div>
-            </section>
-
-            <!-- 1. Percepción del cliente -->
-            <section id="percepcion-cliente" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 01</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">1. Percepción del cliente (según feedback)</h2>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 border-t-4 border-gold-500">
-                    <div class="flex items-center justify-between mb-6">
-                        <span class="bg-slate-100 text-navy-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">Gerencia & Jocelynne</span>
-                    </div>
-                    
-                    <p class="font-serif text-lg md:text-xl text-navy-900 leading-relaxed mb-8 font-medium">
-                        Según los comentarios de gerencia y Jocelynne, el problema no es producción de contenido, sino alineación de nivel estratégico y lenguaje ICP.
-                    </p>
-                    
-                    <div class="grid md:grid-cols-2 gap-8 md:gap-12 border-t border-slate-100 pt-8">
-                        <div>
-                            <h4 class="text-xs uppercase tracking-widest text-gold-600 font-extrabold mb-4">Observaciones explícitas del cliente:</h4>
-                            <ul class="space-y-3">
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    El contenido no refleja seniority de decisores Tier-1
-                                </li>
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    Se percibe demasiado explicativo / táctico
-                                </li>
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    Falta visión de industria (no solo conceptual)
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-xs uppercase tracking-widest text-gold-600 font-extrabold mb-4">El tono debe ser:</h4>
-                            <ul class="space-y-3">
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    experto
-                                </li>
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    optimista
-                                </li>
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    no defensivo
-                                </li>
-                                <li class="text-sm text-slate-700 executive-bullet">
-                                    basado en observación de industria
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 pt-6 border-t border-slate-100 flex items-start gap-4 bg-slate-50 p-5 rounded">
-                        <div>
-                            <span class="text-xs uppercase tracking-widest text-slate-500 font-extrabold block mb-1">Enfoque clave solicitado:</span>
-                            <p class="text-navy-900 font-medium text-sm">Hablar como firma consultora estratégica, no como proveedor de servicios.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 2. Percepción del equipo MTI -->
-            <section id="percepcion-equipo" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 02</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">2. Percepción del equipo MTI</h2>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 border-l-4 border-navy-900">
-                    <div class="flex items-center justify-between mb-6">
-                        <span class="bg-navy-900 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">Diagnóstico Operativo</span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-                        <div>
-                            <h4 class="text-xs uppercase tracking-widest text-navy-700 font-extrabold mb-3">Diagnóstico operativo del equipo:</h4>
-                            <p class="text-slate-700 text-sm mb-4 leading-relaxed font-light">El contenido tiene coherencia estratégica, pero no está “justificado”</p>
-                            
-                            <h5 class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Falta defender:</h5>
-                            <ul class="space-y-2.5">
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    por qué existe cada pieza
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    qué decisión del negocio representa
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    a qué parte del ICP impacta
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-xs uppercase tracking-widest text-navy-700 font-extrabold mb-3">Problema operativo relevante:</h4>
-                            <ul class="space-y-3">
-                                <li class="text-sm text-slate-700 executive-bullet-dark">
-                                    alta dependencia del cliente en assets visuales
-                                </li>
-                                <li class="text-sm text-slate-700 executive-bullet-dark">
-                                    ausencia de sistema formal de “plan B de publicación”
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 p-6 bg-slate-50 border border-slate-150 rounded">
-                        <span class="text-xs uppercase tracking-widest text-navy-700 font-extrabold block mb-2">Insight del equipo:</span>
-                        <p class="font-serif text-lg text-navy-900 font-medium italic">
-                            "El contenido no solo debe publicarse, debe poder defenderse ante cliente, dirección y ICP."
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3. ICP ACTUAL APROBADO -->
-            <section id="icp-actual" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 03</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">3. ICP ACTUAL APROBADO</h2>
-                </div>
-
-                <div class="mb-4">
-                    <span class="text-xs uppercase tracking-widest text-slate-500 font-bold">Roles principales:</span>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
-                    <!-- Card 1 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:shadow-md transition-all duration-300 border-t-2 border-gold-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Tecnología</span>
-                            <h3 class="font-serif text-lg font-bold text-navy-900 mt-1 mb-3">CIO / CTO</h3>
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed font-light">
-                            Socio tecnológico clave enfocado en la estabilidad de la arquitectura y la velocidad de la ejecución técnica.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:shadow-md transition-all duration-300 border-t-2 border-gold-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Producto</span>
-                            <h3 class="font-serif text-lg font-bold text-navy-900 mt-1 mb-3">CPO / Product Leader</h3>
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed font-light">
-                            Líder de definición estratégica de producto enfocado en optimizar el time-to-market y reducir el retrabajo organizacional.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:shadow-md transition-all duration-300 border-t-2 border-gold-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Estrategia</span>
-                            <h3 class="font-serif text-lg font-bold text-navy-900 mt-1 mb-3">Gerente de Innovación / Transformación Digital</h3>
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed font-light">
-                            Estratega organizacional encargado de alinear múltiples stakeholders e impulsar la adopción de nuevas iniciativas digitales.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Structural block -->
-                <div class="bg-navy-900 text-white rounded p-8 md:p-10 shadow-lg border-l-4 border-gold-500">
-                    <div class="flex items-start gap-4 mb-6">
-                        <div>
-                            <h4 class="font-serif text-xl font-bold text-gold-500 mb-1">Problema estructural común del ICP</h4>
-                            <p class="text-sm text-slate-300 font-light">No compran servicios.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="border-t border-navy-800 pt-6">
-                        <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-4">Compran:</span>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="text-sm text-slate-200 executive-bullet">
-                                reducción de incertidumbre en decisiones críticas
-                            </div>
-                            <div class="text-sm text-slate-200 executive-bullet">
-                                capacidad de ejecución sin fricción organizacional
-                            </div>
-                            <div class="text-sm text-slate-200 executive-bullet">
-                                control del riesgo técnico y político
-                            </div>
-                            <div class="text-sm text-slate-200 executive-bullet">
-                                velocidad sin comprometer estabilidad operativa
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. ICP MÁS DETALLADO -->
-            <section id="icp-detallado" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 04</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">4. ICP MÁS DETALLADO</h2>
-                </div>
-
-                <div class="mb-6">
-                    <h3 class="font-serif text-xl text-navy-800 font-bold">Dolor por rol (con fuentes)</h3>
-                </div>
-
-                <!-- Pain points grid -->
-                <div class="grid md:grid-cols-3 gap-8 mb-12">
-                    <!-- Role 1 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 hover:shadow-md transition-all duration-300 border-t-4 border-navy-900 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] font-extrabold text-navy-900 uppercase tracking-widest block mb-4">CIO / CTO</span>
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Dolores reales:</h4>
-                            <ul class="space-y-2.5 mb-6">
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    deuda técnica acumulada que limita velocidad
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    presión constante del negocio por entregar más rápido
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    consultoras grandes lentas y poco adaptables
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    riesgo operativo en sistemas críticos
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Fuente:</span>
-                            <span class="text-xs font-semibold text-navy-900 block mb-2 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                            <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/technology-trends-outlook-2025" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-950 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Estudio →</a>
-                        </div>
-                    </div>
-
-                    <!-- Role 2 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 hover:shadow-md transition-all duration-300 border-t-4 border-navy-900 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] font-extrabold text-navy-900 uppercase tracking-widest block mb-4">CPO / Product Leader</span>
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Dolores reales:</h4>
-                            <ul class="space-y-2.5 mb-6">
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    time-to-market lento
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    retrabajo constante por mala validación inicial
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    backlog sin priorización estratégica real
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    desconexión entre negocio y tecnología
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Fuente:</span>
-                            <span class="text-xs font-semibold text-navy-900 block mb-2 leading-snug">“State of Product Management 2025 – Productboard”</span>
-                            <a href="https://www.productboard.com/resources/state-of-product-management/" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-950 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Estudio →</a>
-                        </div>
-                    </div>
-
-                    <!-- Role 3 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 hover:shadow-md transition-all duration-300 border-t-4 border-navy-900 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] font-extrabold text-navy-900 uppercase tracking-widest block mb-4">Innovación / Transformación Digital</span>
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Dolores reales:</h4>
-                            <ul class="space-y-2.5 mb-6">
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    proyectos políticos sin alineación real
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    múltiples áreas sin coordinación efectiva
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    presión por resultados visibles rápidos
-                                </li>
-                                <li class="text-xs text-slate-700 executive-bullet-dark">
-                                    baja adopción de iniciativas digitales
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Fuente:</span>
-                            <span class="text-xs font-semibold text-navy-900 block mb-2 leading-snug">“Digital Transformation Insights – Deloitte 2025”</span>
-                            <a href="https://www2.deloitte.com/us/en/insights/focus/digital-transformation.html" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-950 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Estudio →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Buyer Persona Sub-section -->
-                <div class="mb-6">
-                    <h3 class="font-serif text-xl text-navy-800 font-bold">Buyer Persona por industria y rol</h3>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- BP 1 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] tracking-widest font-extrabold uppercase text-gold-500 block mb-2">Energía / Utilities</span>
-                            <span class="text-xs font-bold text-slate-400 block mb-1">Copec, Abastible</span>
-                            <h4 class="font-serif text-base font-bold text-navy-900 mb-4 leading-tight">CIO / CTO enfocado en continuidad operativa</h4>
-                            <ul class="space-y-2 mb-6">
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    alta criticidad de sistemas
-                                </li>
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    riesgo sistémico elevado
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-t border-slate-100 rounded">
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-500 block mb-1">Necesita:</span>
-                            <p class="text-xs font-bold text-navy-900">estabilidad, arquitectura robusta, reducción de riesgo operativo</p>
-                        </div>
-                    </div>
-
-                    <!-- BP 2 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] tracking-widest font-extrabold uppercase text-gold-500 block mb-2">Banca / Finanzas</span>
-                            <span class="text-xs font-bold text-slate-400 block mb-1">BCI, Previred</span>
-                            <h4 class="font-serif text-base font-bold text-navy-900 mb-4 leading-tight">CIO / CPO con presión regulatoria</h4>
-                            <ul class="space-y-2 mb-6">
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    core systems críticos
-                                </li>
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    escalabilidad segura
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-t border-slate-100 rounded">
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-500 block mb-1">Necesita:</span>
-                            <p class="text-xs font-bold text-navy-900">control, precisión, confiabilidad</p>
-                        </div>
-                    </div>
-
-                    <!-- BP 3 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] tracking-widest font-extrabold uppercase text-gold-500 block mb-2">Retail / Salud</span>
-                            <span class="text-xs font-bold text-slate-400 block mb-1">Cruz Verde</span>
-                            <h4 class="font-serif text-base font-bold text-navy-900 mb-4 leading-tight">CPO / Innovación digital</h4>
-                            <ul class="space-y-2 mb-6">
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    foco en experiencia cliente
-                                </li>
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    presión por velocidad
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-t border-slate-100 rounded">
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-500 block mb-1">Necesita:</span>
-                            <p class="text-xs font-bold text-navy-900">time-to-market rápido pero controlado, validación temprana, reducción de retrabajo</p>
-                        </div>
-                    </div>
-
-                    <!-- BP 4 -->
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] tracking-widest font-extrabold uppercase text-gold-500 block mb-2">Gobierno</span>
-                            <span class="text-xs font-bold text-slate-400 block mb-1">Institucional</span>
-                            <h4 class="font-serif text-base font-bold text-navy-900 mb-4 leading-tight">Innovación / CIO institucional</h4>
-                            <ul class="space-y-2 mb-6">
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    múltiples stakeholders
-                                </li>
-                                <li class="text-xs text-slate-600 executive-bullet-dark">
-                                    alta presión política
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-t border-slate-100 rounded">
-                            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-500 block mb-1">Necesita:</span>
-                            <p class="text-xs font-bold text-navy-900">gobernanza, alineación inter-áreas, reducción de riesgo político</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. ALINEACIÓN DEL CONTENIDO ACTUAL CON ICP -->
-            <section id="alineacion-contenido" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 05</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">5. ALINEACIÓN DEL CONTENIDO ACTUAL CON ICP</h2>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded p-8 md:p-10 shadow-sm">
-                    <div class="grid md:grid-cols-2 gap-10 mb-8">
-                        <!-- Well Aligned -->
-                        <div>
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-executive-successBg text-executive-success text-[10px] font-bold uppercase tracking-wider rounded mb-6">
-                                Bien alineado
-                            </div>
-                            
-                            <!-- Progress metric 1 -->
-                            <div class="mb-5">
-                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-                                    <span>Product Discovery</span>
-                                    <span class="font-mono">35%</span>
-                                </div>
-                                <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-emerald-700" style="width: 35%"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Progress metric 2 -->
-                            <div class="mb-5">
-                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-                                    <span>Staffing & Hunting</span>
-                                    <span class="font-mono">25%</span>
-                                </div>
-                                <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-emerald-700" style="width: 25%"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Progress metric 3 -->
-                            <div>
-                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-                                    <span>Ecosistemas integrados</span>
-                                    <span class="font-mono">15%</span>
-                                </div>
-                                <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-emerald-700" style="width: 15%"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Partially Aligned -->
-                        <div>
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-executive-warningBg text-executive-warning text-[10px] font-bold uppercase tracking-wider rounded mb-6">
-                                Parcialmente alineado
-                            </div>
-                            
-                            <!-- Progress metric 4 -->
-                            <div class="mb-5">
-                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-                                    <span>Liderazgo y Cultura</span>
-                                    <span class="font-mono">15%</span>
-                                </div>
-                                <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-amber-700" style="width: 15%"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Progress metric 5 -->
-                            <div>
-                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-                                    <span>Experiencia en mercado</span>
-                                    <span class="font-mono">10%</span>
-                                </div>
-                                <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-amber-700" style="width: 10%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Problem Detected Sub-card -->
-                    <div class="border-t border-slate-100 pt-8 mt-8">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-executive-errorBg text-executive-error text-[10px] font-bold uppercase tracking-wider rounded mb-4">
-                            Problema detectado
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="p-4 bg-slate-50 border border-slate-100 rounded">
-                                <p class="text-sm font-semibold text-navy-900 leading-normal">exceso de contenido conceptual sin contexto de industria</p>
-                            </div>
-                            <div class="p-4 bg-slate-50 border border-slate-100 rounded">
-                                <p class="text-sm font-semibold text-navy-900 leading-normal">bajo nivel de personalización por rol</p>
-                            </div>
-                            <div class="p-4 bg-slate-50 border border-slate-100 rounded">
-                                <p class="text-sm font-semibold text-navy-900 leading-normal">falta de lectura directa del ICP por decisión ejecutiva</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 6. Pilares editoriales actuales -->
-            <section id="pilares" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 06</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">6. Pilares editoriales actuales</h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Pillar column 1 -->
-                    <div class="bg-white border border-slate-200 rounded p-8 shadow-sm hover:shadow-md transition-all duration-300 border-t-4 border-gold-500">
-                        <span class="text-xs uppercase tracking-widest text-gold-600 font-extrabold block mb-2">Corporativo</span>
-                        <h3 class="font-serif text-2xl font-bold text-navy-900 mb-6">Company Page</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3.5 pb-3 border-b border-slate-100">
-                                <span class="text-gold-500 font-serif text-lg font-bold">01</span>
-                                <span class="text-sm font-semibold text-navy-800">Experiencia en mercado</span>
-                            </li>
-                            <li class="flex items-center gap-3.5 pb-3 border-b border-slate-100">
-                                <span class="text-gold-500 font-serif text-lg font-bold">02</span>
-                                <span class="text-sm font-semibold text-navy-800">Product Discovery</span>
-                            </li>
-                            <li class="flex items-center gap-3.5">
-                                <span class="text-gold-500 font-serif text-lg font-bold">03</span>
-                                <span class="text-sm font-semibold text-navy-800">Staffing & Hunting Premium</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Pillar column 2 -->
-                    <div class="bg-white border border-slate-200 rounded p-8 shadow-sm hover:shadow-md transition-all duration-300 border-t-4 border-navy-900">
-                        <span class="text-xs uppercase tracking-widest text-slate-400 font-extrabold block mb-2">Marca Personal</span>
-                        <h3 class="font-serif text-2xl font-bold text-navy-900 mb-6">Jocelynne</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3.5 pb-3 border-b border-slate-100">
-                                <span class="text-navy-900 font-serif text-lg font-bold">01</span>
-                                <span class="text-sm font-semibold text-navy-800">Estrategia y Mitigación de Riesgo</span>
-                            </li>
-                            <li class="flex items-center gap-3.5 pb-3 border-b border-slate-100">
-                                <span class="text-navy-900 font-serif text-lg font-bold">02</span>
-                                <span class="text-sm font-semibold text-navy-800">Liderazgo y Cultura</span>
-                            </li>
-                            <li class="flex items-center gap-3.5 pb-3 border-b border-slate-100">
-                                <span class="text-navy-900 font-serif text-lg font-bold">03</span>
-                                <span class="text-sm font-semibold text-navy-800">Casos de éxito</span>
-                            </li>
-                            <li class="flex items-center gap-3.5">
-                                <span class="text-navy-900 font-serif text-lg font-bold">04</span>
-                                <span class="text-sm font-semibold text-navy-800">Talento Senior y Estabilidad</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 7. Tono comunicacional recomendado -->
-            <section id="tono-comunicacional" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 07</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">7. Tono comunicacional recomendado</h2>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded p-8 md:p-10 shadow-sm mb-8">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-2">Pilar Central</span>
-                    <h3 class="font-serif text-2xl font-bold text-navy-900 mb-6">Global</h3>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div class="p-4 bg-slate-50 border-l-2 border-gold-500 rounded">
-                            <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Enfoque</span>
-                            <span class="text-xs font-bold text-navy-900">consultivo senior</span>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-l-2 border-gold-500 rounded">
-                            <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Perspectiva</span>
-                            <span class="text-xs font-bold text-navy-900">observacional</span>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-l-2 border-gold-500 rounded">
-                            <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Nivel de profundidad</span>
-                            <span class="text-xs font-bold text-navy-900">sin explicaciones básicas</span>
-                        </div>
-                        <div class="p-4 bg-slate-50 border-l-2 border-gold-500 rounded">
-                            <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Orientación</span>
-                            <span class="text-xs font-bold text-navy-900">enfocado en decisiones reales</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <h3 class="font-serif text-xl text-navy-800 font-bold">Por industria</h3>
-                </div>
-
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:border-gold-500 transition-colors duration-200">
-                        <span class="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 block mb-2">Energía</span>
-                        <span class="text-sm font-bold text-navy-900">estabilidad / riesgo</span>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:border-gold-500 transition-colors duration-200">
-                        <span class="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 block mb-2">Banca</span>
-                        <span class="text-sm font-bold text-navy-900">precisión / control</span>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:border-gold-500 transition-colors duration-200">
-                        <span class="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 block mb-2">Retail</span>
-                        <span class="text-sm font-bold text-navy-900">velocidad / validación</span>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded p-6 shadow-sm hover:border-gold-500 transition-colors duration-200">
-                        <span class="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 block mb-2">Gobierno</span>
-                        <span class="text-sm font-bold text-navy-900">gobernanza / alineación</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 8. Matriz editorial HF Solutions -->
-            <section id="matriz-editorial" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 08</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">8. Matriz editorial HF Solutions</h2>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded shadow-sm overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-navy-900 border-b-2 border-gold-500">
-                                    <th class="px-6 py-4.5 text-xs uppercase tracking-widest font-bold text-white">Pilar</th>
-                                    <th class="px-6 py-4.5 text-xs uppercase tracking-widest font-bold text-white">ICP</th>
-                                    <th class="px-6 py-4.5 text-xs uppercase tracking-widest font-bold text-white">Industria</th>
-                                    <th class="px-6 py-4.5 text-xs uppercase tracking-widest font-bold text-white">Objetivo</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50 transition-colors duration-150">
-                                    <td class="px-6 py-4 text-sm font-bold text-navy-900">Product Discovery</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600 font-medium">CTO / CPO</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Banca / Retail</td>
-                                    <td class="px-6 py-4 text-sm text-slate-500 italic">reducir retrabajo + riesgo</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors duration-150">
-                                    <td class="px-6 py-4 text-sm font-bold text-navy-900">Staffing</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600 font-medium">CIO / CTO</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Energía / Banca</td>
-                                    <td class="px-6 py-4 text-sm text-slate-500 italic">continuidad operativa</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors duration-150">
-                                    <td class="px-6 py-4 text-sm font-bold text-navy-900">Ecosistemas</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600 font-medium">CIO</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Energía / Gobierno</td>
-                                    <td class="px-6 py-4 text-sm text-slate-500 italic">simplificación sistémica</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors duration-150">
-                                    <td class="px-6 py-4 text-sm font-bold text-navy-900">Liderazgo</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600 font-medium">Innovación</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Gobierno</td>
-                                    <td class="px-6 py-4 text-sm text-slate-500 italic">alineación organizacional</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 9. PROPUESTA DE CONTENIDOS JULIO -->
-            <section id="propuesta-julio" class="section-block px-6 py-12 md:px-16 max-w-6xl">
-                <div class="mb-12 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 09</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">9. PROPUESTA DE CONTENIDOS JULIO (con justificación + fuentes)</h2>
-                </div>
-
-                <!-- Company Page Block -->
-                <div class="mb-16">
-                    <div class="flex items-center gap-3 border-b-2 border-gold-500 pb-3 mb-8">
-                        <span class="w-3.5 h-3.5 rounded-full bg-gold-500 shrink-0"></span>
-                        <h3 class="font-serif text-2xl font-bold text-navy-900">COMPANY PAGE (HF Solutions)</h3>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Card 1 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">01</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Product Discovery no es ahorro de costo, es reducción de incertidumbre</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Posicionar a HF como socio de decisión estratégica en fases críticas.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">El CIO no decide por costo, decide por riesgo. Este contenido redefine Product Discovery como herramienta de reducción de incertidumbre ejecutiva.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO / CTO – Banca / Seguros</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                                <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/technology-trends-outlook-2025" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">02</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Por qué los proyectos fallan antes de la primera línea de código</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Posicionar a HF en fase pre-ejecución (decisión de producto)</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">El mayor costo está antes del desarrollo. Este contenido instala a HF en la fase de discovery estratégico.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CPO / Product Leader</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“State of Product Management 2025 – Productboard”</span>
-                                <a href="https://www.productboard.com/resources/state-of-product-management/" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">03</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">El error de escalar sin discovery en retail digital</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Conectar velocidad con riesgo de escalabilidad</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">Retail prioriza velocidad, pero sin validación genera pérdida de eficiencia y conversión.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CPO Retail</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Digital Transformation Insights – Deloitte 2025”</span>
-                                <a href="https://www2.deloitte.com/us/en/insights/focus/digital-transformation.html" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">04</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Consultoría boutique vs consultoras globales</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Diferenciación directa frente a Accenture / Globant</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">El ICP ya evalúa grandes consultoras; este contenido posiciona a HF como alternativa flexible y estratégica.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO / CTO Enterprise</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                                <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/technology-trends-outlook-2025" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 5 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">05</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">El costo oculto de la velocidad en proyectos críticos</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Reencuadrar velocidad como variable de riesgo</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">El ICP valora velocidad, pero no mide su costo oculto (retrabajo + fallas).</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO / CTO Energía / Banca</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Digital Transformation Insights – Deloitte 2025”</span>
-                                <a href="https://www2.deloitte.com/us/en/insights/focus/digital-transformation.html" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 6 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">06</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Cómo se pierde dinero por mala alineación inicial</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Posicionar alineación como variable crítica de negocio</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">El fallo más costoso ocurre antes de la ejecución: falta de alineación entre áreas.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">Innovación / CIO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Strategy Insights – McKinsey”</span>
-                                <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 7 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">07</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Qué separa ejecución técnica de estrategia ejecutiva</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Elevar conversación de técnico a nivel board</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">El ICP no compra ejecución, compra impacto en negocio.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CTO / CPO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“State of Product Management 2025 – Productboard”</span>
-                                <a href="https://www.productboard.com/resources/state-of-product-management/" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-
-                        <!-- Card 8 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-gold-500/10 leading-none select-none">08</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Caso: cuándo no hacer el proyecto</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Posicionar autoridad estratégica (HF decide no ejecutar)</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Justificación</span>
-                                        <p class="text-xs text-slate-600 leading-relaxed">La capacidad de decir “no” aumenta percepción de partner estratégico.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO / CTO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                                <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/technology-trends-outlook-2025" target="_blank" rel="noopener noreferrer" class="text-xs text-gold-600 hover:text-navy-900 hover:underline transition-colors duration-200 inline-flex items-center gap-1 font-medium">Ver Fuente →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Jocelynne Block -->
-                <div>
-                    <div class="flex items-center gap-3 border-b-2 border-navy-900 pb-3 mb-8">
-                        <span class="w-3.5 h-3.5 rounded-full bg-navy-900 shrink-0"></span>
-                        <h3 class="font-serif text-2xl font-bold text-navy-900">JOCELYNNE (8 contenidos con lógica ICP)</h3>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Content 1 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">01</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Cuando la gobernanza falla, el código no importa</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Posicionar problema estructural sobre técnico</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">Gobierno / CIO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Digital Transformation Insights – Deloitte 2025”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 2 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">02</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Por qué los proyectos no fallan por tecnología sino por alineación</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Reencuadrar el problema en coordinación organizacional</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO / CTO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 3 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">03</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">El rol invisible del CIO en evitar crisis operativas</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Elevar rol del CIO como risk owner</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO Energía</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 4 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">04</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">La falsa eficiencia del delivery rápido sin discovery</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Desmitificar velocidad como éxito</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CPO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“State of Product Management 2025 – Productboard”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 5 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">05</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Cómo las organizaciones confunden velocidad con avance</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Diferenciar output vs outcome</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">Innovación</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Digital Transformation Insights – Deloitte 2025”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 6 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">06</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">El riesgo de tercerizar decisiones críticas</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Posicionar HF como socio estratégico</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">CIO / CTO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Strategy Insights – McKinsey”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 7 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">07</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Qué hace que un proyecto sobreviva a la presión interna</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Enfatizar resiliencia organizacional</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">Innovación</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Digital Transformation Insights – Deloitte 2025”</span>
-                            </div>
-                        </div>
-
-                        <!-- Content 8 -->
-                        <div class="bg-white border border-slate-200 rounded p-6 md:p-8 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative">
-                            <span class="absolute top-6 right-8 font-serif text-3xl font-extrabold text-navy-900/10 leading-none select-none">08</span>
-                            <div>
-                                <h4 class="font-serif text-lg font-bold text-navy-900 mb-4 pr-12 leading-snug">Liderazgo en proyectos complejos: el factor humano real</h4>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">Objetivo</span>
-                                        <p class="text-xs text-navy-900 leading-relaxed font-semibold">Humanizar sin perder nivel ejecutivo</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block mb-1">ICP</span>
-                                        <p class="text-xs text-navy-900 font-medium">Todos</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-100 flex flex-col gap-1">
-                                <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 block">Fuente</span>
-                                <span class="text-xs font-bold text-navy-900 leading-snug">“Technology Trends Outlook 2025 – McKinsey”</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 10. Plan B Operativo -->
-            <section id="plan-b-operativo" class="section-block px-6 py-12 md:px-16 max-w-6xl mb-24">
-                <div class="mb-8 border-b border-slate-200 pb-4">
-                    <span class="text-xs uppercase tracking-widest text-gold-500 font-bold block mb-1">Sección 10</span>
-                    <h2 class="font-serif text-2xl md:text-3xl text-navy-900 font-bold">10. Plan B Operativo</h2>
-                </div>
-
-                <div class="bg-executive-errorBg border-l-4 border-executive-error rounded p-8 md:p-10 shadow-sm">
-                    <div class="flex items-center gap-3.5 mb-6">
-                        <h3 class="font-serif text-xl md:text-2xl font-bold text-executive-error tracking-tight">PLAN B OPERATIVO (IMPORTANTE)</h3>
-                    </div>
-                    
-                    <p class="text-sm font-semibold text-executive-error mb-8 leading-relaxed max-w-3xl">
-                        Para cada contenido se dispondrá de una bifurcación de entrega según la disponibilidad de material del cliente:
-                    </p>
-
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <!-- Plan A -->
-                        <div class="bg-white border border-slate-100 p-6 rounded shadow-sm">
-                            <span class="text-[10px] uppercase font-extrabold tracking-widest text-slate-400 block mb-2">Alternativa</span>
-                            <h4 class="font-serif text-base font-bold text-navy-900 mb-2">Plan A</h4>
-                            <p class="text-xs font-semibold text-slate-700">assets cliente</p>
-                        </div>
-                        <!-- Plan B -->
-                        <div class="bg-white border border-slate-100 p-6 rounded shadow-sm">
-                            <span class="text-[10px] uppercase font-extrabold tracking-widest text-slate-400 block mb-2">Contingencia</span>
-                            <h4 class="font-serif text-base font-bold text-navy-900 mb-2">Plan B</h4>
-                            <p class="text-xs font-semibold text-slate-700 mb-1">plantilla HF estándar</p>
-                            <span class="text-[10px] text-slate-400 font-medium block leading-normal">(fondos planos + copy adaptado) independiente de materiales externos</span>
-                        </div>
-                        <!-- Protocol -->
-                        <div class="bg-executive-error text-white p-6 rounded shadow-sm flex flex-col justify-between">
-                            <div>
-                                <span class="text-[10px] uppercase font-extrabold tracking-widest text-gold-100 block mb-2">Gobernanza</span>
-                                <h4 class="font-serif text-base font-bold mb-2 text-white">Protocolo</h4>
-                            </div>
-                            <p class="text-xs font-bold text-white leading-normal">activación automática si no hay respuesta del cliente</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
+    <!-- MENÚ DE NAVEGACIÓN MÓVIL (FLOTANTE CON NEÓN BLANCO Y ACCESO AL NUEVO PLAN DE CONTENIDO) -->
+    <div class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/90 backdrop-blur-lg border border-zinc-800/80 px-4 py-3.5 rounded-full flex items-center space-x-4 text-[9px] tracking-widest text-zinc-400 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+        <a href="#home" class="hover:text-white font-mono active:text-white">HOME</a>
+        <a href="#icp" class="hover:text-white font-mono active:text-white">ICP</a>
+        <a href="#arquitectura" class="hover:text-white font-mono active:text-white">ARQ</a>
+        <a href="#plan" class="hover:text-white font-mono active:text-white text-brand-neonPurple">PLAN</a>
+        <a href="#proceso" class="hover:text-white font-mono active:text-white">PROC</a>
     </div>
 
-    <!-- Menu & Navigation Logic Scripts -->
+    <main class="flex-grow">
+        
+        <!-- SECTION 1: HOME (CONTIENE PUNTO 1 Y PUNTO 2 - MEJORADOS VISUALMENTE) -->
+        <section id="home" class="relative pt-16 pb-28 md:py-32 border-b border-zinc-900 overflow-hidden scroll-mt-24">
+            <!-- Efectos de Fondo Decorativos Sutiles -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.06),rgba(0,0,0,0))] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- HERO BRANDING -->
+                <div class="text-center md:text-left mb-20 md:mb-28">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 border border-zinc-800 rounded-full text-xs font-mono tracking-widest text-zinc-400 mb-6 bg-zinc-900/40">
+                        <span class="w-2 h-2 rounded-full bg-brand-neonGreen animate-ping"></span> ESTRATEGIA EDITORIAL
+                    </span>
+                    <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-white mb-4">
+                        HF SOLUTIONS
+                    </h1>
+                    <p class="text-2xl md:text-4xl text-zinc-300 font-light tracking-tight max-w-3xl">
+                        Estratégica Editorial del Proyecto
+                    </p>
+                </div>
+
+                <!-- PUNTO 1: Contexto del Proyecto (Distribución Visual Premium de Alto Nivel con Borde de Neón Verde) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-16 border-t border-zinc-900">
+                    <div class="lg:col-span-4">
+                        <div class="sticky top-28">
+                            <span class="text-xs font-mono text-zinc-500 tracking-widest block flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-pulse"></span>
+                                01 // CONTEXTO
+                            </span>
+                            <h2 class="text-3xl font-extrabold tracking-tight text-white mt-2">1. Contexto del Proyecto</h2>
+                            <div class="mt-4 w-12 h-1 bg-white"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-8 space-y-8 text-zinc-300">
+                        <!-- Tarjeta Principal con el Objetivo Ajustado de la Landing con Neón Verde -->
+                        <div class="p-8 bg-zinc-900/40 border border-brand-neonGreen rounded-xl shadow-neon-glow-green">
+                            <div class="flex gap-4 items-start">
+                                <i data-lucide="target" class="w-7 h-7 text-brand-neonGreen shrink-0 mt-0.5 animate-pulse"></i>
+                                <p class="text-lg md:text-xl font-medium leading-relaxed text-zinc-100">
+                                    El objetivo es transformar la experiencia, metodología y capacidad de ejecución de HF Solutions en un activo visible para el mercado.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-zinc-950/80 border border-zinc-900 rounded-xl space-y-4">
+                            <div class="flex gap-3 items-start">
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
+                                <p class="leading-relaxed text-zinc-300">
+                                    HF Solutions posee una trayectoria sólida desarrollando proyectos tecnológicos complejos para organizaciones de alta exigencia. Sin embargo, gran parte de ese conocimiento hoy se encuentra concentrado en la experiencia del equipo, en conversaciones comerciales y en proyectos ejecutados, sin una representación proporcional en los canales de comunicación de la marca.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-6">
+                            <p class="text-xs font-mono text-zinc-400 tracking-wider mb-6 flex items-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4 text-zinc-400"></i>
+                                POSICIONAMIENTO BUSCADO EN EL MERCADO:
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-5 bg-zinc-900/10 border border-zinc-800 rounded-xl neon-border-cyan flex items-start gap-4">
+                                    <div class="p-2 bg-zinc-900 rounded-lg text-brand-neonCyan border border-zinc-800">
+                                        <i data-lucide="users" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-white">Un partner tecnológico estratégico.</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 bg-zinc-900/10 border border-zinc-800 rounded-xl neon-border-cyan flex items-start gap-4">
+                                    <div class="p-2 bg-zinc-900 rounded-lg text-brand-neonCyan border border-zinc-800">
+                                        <i data-lucide="gem" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-white">Una consultora boutique de alto involucramiento.</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 bg-zinc-900/10 border border-zinc-800 rounded-xl neon-border-cyan flex items-start gap-4">
+                                    <div class="p-2 bg-zinc-900 rounded-lg text-brand-neonCyan border border-zinc-800">
+                                        <i data-lucide="cpu" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-white">Un referente en proyectos tecnológicos complejos.</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 bg-zinc-900/10 border border-zinc-800 rounded-xl neon-border-cyan flex items-start gap-4">
+                                    <div class="p-2 bg-zinc-900 rounded-lg text-brand-neonCyan border border-zinc-800">
+                                        <i data-lucide="award" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-white">Una alternativa especializada frente a grandes consultoras tradicionales.</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 bg-zinc-900/10 border border-zinc-800 rounded-xl neon-border-cyan flex items-start gap-4 md:col-span-2">
+                                    <div class="p-2 bg-zinc-900 rounded-lg text-brand-neonCyan border border-zinc-800">
+                                        <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-white">Un socio capaz de reducir incertidumbre antes de invertir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUNTO 2: Aprendizajes Obtenidos (Acordeón Interactivo de Alto Impacto / Neón Verde) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-24 mt-24 border-t border-zinc-900">
+                    <div class="lg:col-span-4">
+                        <div class="sticky top-28">
+                            <span class="text-xs font-mono text-zinc-500 tracking-widest block flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-ping"></span>
+                                02 // INSIGHTS
+                            </span>
+                            <h2 class="text-3xl font-extrabold tracking-tight text-white mt-2">2. Aprendizajes Obtenidos Durante la Primera Etapa</h2>
+                            <p class="text-sm text-zinc-400 mt-4 leading-relaxed">
+                                Durante la primera etapa del proyecto se validaron distintos aprendizajes que permitieron refinar la estrategia editorial y acercarla aún más a los objetivos de posicionamiento de HF Solutions.
+                            </p>
+                            <p class="text-xs font-mono text-brand-neonGreen mt-6 flex items-center gap-2">
+                                <i data-lucide="info" class="w-4 h-4 animate-bounce"></i>
+                                Haz clic en los aprendizajes para expandirlos
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-8 space-y-4">
+                        
+                        <!-- Accordion Item 1 -->
+                        <div class="accordion-item bg-zinc-900/20 border border-zinc-800 rounded-xl transition-all duration-300">
+                            <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left gap-4 focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-mono text-zinc-500">APRENDIZAJE 1</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-pulse"></span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400"></i>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <h4 class="text-base font-semibold text-white mb-2">Los contenidos con mayor potencial son aquellos que elevan la conversación desde la tecnología hacia la toma de decisiones.</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Los decisores no buscan información técnica aislada; buscan perspectivas que les ayuden a reducir incertidumbre y tomar mejores decisiones.</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="accordion-item bg-zinc-900/20 border border-zinc-800 rounded-xl transition-all duration-300">
+                            <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left gap-4 focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-mono text-zinc-500">APRENDIZAJE 2</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-pulse"></span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400"></i>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <h4 class="text-base font-semibold text-white mb-2">El principal valor diferencial de HF Solutions no está únicamente en los servicios que entrega.</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed mb-4">Está en la experiencia acumulada, la metodología propia, la cercanía en la ejecución y la capacidad de acompañar proyectos complejos.</p>
+                                <div class="p-3 bg-zinc-950 border border-zinc-800 rounded text-xs font-mono text-zinc-400">
+                                    Por lo tanto, la estrategia debe hacer visible ese valor.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="accordion-item bg-zinc-900/20 border border-zinc-800 rounded-xl transition-all duration-300">
+                            <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left gap-4 focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-mono text-zinc-500">APRENDIZAJE 3</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-pulse"></span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400"></i>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <h4 class="text-base font-semibold text-white mb-3">Las organizaciones no buscan proveedores tecnológicos.</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed mb-4">Buscan partners que les permitan:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono text-zinc-300">
+                                    <div class="flex items-center gap-2 p-2 bg-black/40 border border-zinc-800/60 rounded">
+                                        <i data-lucide="shield" class="w-4 h-4 text-brand-neonGreen"></i> Reducir riesgo.
+                                    </div>
+                                    <div class="flex items-center gap-2 p-2 bg-black/40 border border-zinc-800/60 rounded">
+                                        <i data-lucide="zap" class="w-4 h-4 text-brand-neonGreen"></i> Acelerar decisiones.
+                                    </div>
+                                    <div class="flex items-center gap-2 p-2 bg-black/40 border border-zinc-800/60 rounded">
+                                        <i data-lucide="columns" class="w-4 h-4 text-brand-neonGreen"></i> Alinear áreas.
+                                    </div>
+                                    <div class="flex items-center gap-2 p-2 bg-black/40 border border-zinc-800/60 rounded">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-brand-neonGreen"></i> Ejecutar con mayor certeza.
+                                    </div>
+                                    <div class="flex items-center gap-2 p-2 bg-black/40 border border-zinc-800/60 rounded md:col-span-2">
+                                        <i data-lucide="refresh-cw" class="w-4 h-4 text-brand-neonGreen"></i> Asegurar continuidad operativa.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="accordion-item bg-zinc-900/20 border border-zinc-800 rounded-xl transition-all duration-300">
+                            <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left gap-4 focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-mono text-zinc-500">APRENDIZAJE 4</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-pulse"></span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400"></i>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <h4 class="text-base font-semibold text-white mb-2">La conversación de mercado está evolucionando.</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed mb-4">Si bien Tecnología continúa siendo un actor clave, aparecen nuevos protagonistas en la evaluación y liderazgo de iniciativas digitales:</p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs font-mono mb-4">
+                                    <span class="px-2.5 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-center text-zinc-300">Comercial</span>
+                                    <span class="px-2.5 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-center text-zinc-300">Canales Digitales</span>
+                                    <span class="px-2.5 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-center text-zinc-300">Gestión de Proyectos</span>
+                                    <span class="px-2.5 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-center text-zinc-300">Producto</span>
+                                </div>
+                                <p class="text-xs font-mono text-zinc-500">Esto amplía la capacidad de influencia de HF Solutions dentro de las organizaciones.</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 5 -->
+                        <div class="accordion-item bg-zinc-900/20 border border-zinc-800 rounded-xl transition-all duration-300">
+                            <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left gap-4 focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-mono text-zinc-500">APRENDIZAJE 5</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neonGreen animate-pulse"></span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400"></i>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <h4 class="text-base font-semibold text-white mb-2">La experiencia acumulada de HF Solutions representa uno de los activos más valiosos para construir autoridad de marca.</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Por lo tanto, debe ocupar un rol central dentro de la estrategia editorial.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ICP (CONTIENE PUNTOS 3, 4 Y 5) -->
+        <section id="icp" class="py-24 border-b border-zinc-900 bg-zinc-950 relative scroll-mt-24">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_0%,rgba(255,255,255,0.03),rgba(0,0,0,0))] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <!-- HEADER SECCIÓN -->
+                <div class="mb-20">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 border border-zinc-800 rounded-full text-xs font-mono tracking-widest text-zinc-400 mb-6 bg-zinc-900/30">
+                        <span class="w-2 h-2 rounded-full bg-brand-neonCyan animate-ping"></span> STRATEGIC AUDIENCE
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 flex items-center gap-3">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i> Ideal Customer Profile
+                    </h2>
+                    <p class="text-zinc-400 text-lg max-w-2xl font-light">
+                        Mapeo y segmentación de los decisores y stakeholders clave en el ecosistema actual.
+                    </p>
+                </div>
+
+                <!-- PUNTO 3: Evolución del ICP -->
+                <div class="pt-12 border-t border-zinc-900">
+                    <h3 class="text-xs font-mono text-zinc-500 tracking-wider uppercase mb-8 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-brand-neonCyan rounded-full animate-pulse"></span> 3. Evolución del ICP
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Left: ICP Original -->
+                        <div class="lg:col-span-5 p-8 bg-zinc-900/20 border border-zinc-900 rounded-xl relative">
+                            <div class="absolute top-4 right-4 text-xxs font-mono text-zinc-500 border border-zinc-800 px-2 py-0.5 rounded">ORIGINAL FRAMEWORK</div>
+                            <h4 class="text-lg font-semibold text-zinc-400 mb-6">ICP Original</h4>
+                            <p class="text-xs font-mono text-zinc-500 mb-4 uppercase tracking-wider">Interlocutores definidos inicialmente:</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-zinc-400 text-sm">
+                                    <span class="w-1.5 h-1.5 bg-zinc-600 rounded-full"></span> CIO
+                                </li>
+                                <li class="flex items-center gap-3 text-zinc-400 text-sm">
+                                    <span class="w-1.5 h-1.5 bg-zinc-600 rounded-full"></span> CTO
+                                </li>
+                                <li class="flex items-center gap-3 text-zinc-400 text-sm">
+                                    <span class="w-1.5 h-1.5 bg-zinc-600 rounded-full"></span> Gerente de Innovación
+                                </li>
+                                <li class="flex items-center gap-3 text-zinc-400 text-sm">
+                                    <span class="w-1.5 h-1.5 bg-zinc-600 rounded-full"></span> Product Owner
+                                </li>
+                                <li class="flex items-center gap-3 text-zinc-400 text-sm">
+                                    <span class="w-1.5 h-1.5 bg-zinc-600 rounded-full"></span> Product Manager
+                                </li>
+                            </ul>
+                            
+                            <div class="mt-8 pt-6 border-t border-zinc-900">
+                                <p class="text-xs text-zinc-500 italic leading-relaxed">
+                                    Sin embargo, durante reuniones comerciales recientes surgió un patrón consistente. En muchas organizaciones el área de Innovación ya no lidera directamente los procesos de evaluación y contratación de soluciones tecnológicas. Hoy aparecen nuevos actores con mayor protagonismo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Center/Transition Arrow -->
+                        <div class="hidden lg:flex lg:col-span-1 items-center justify-center">
+                            <div class="p-3 bg-zinc-900 border border-zinc-800 rounded-full text-brand-neonGreen shadow-[0_0_15px_rgba(0,255,135,0.2)]">
+                                <i data-lucide="chevrons-right" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+
+                        <!-- Right: ICP Actualizado (Con Neón Verde) -->
+                        <div class="lg:col-span-6 p-8 bg-zinc-900/40 border border-brand-neonGreen/35 rounded-xl relative shadow-neon-glow-green">
+                            <div class="absolute top-4 right-4 text-xxs font-mono text-black bg-brand-neonGreen border border-brand-neonGreen px-2.5 py-0.5 rounded tracking-widest font-semibold">ACTUALIZADO</div>
+                            <h4 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-neonGreen animate-pulse"></i> ICP Actualizado
+                            </h4>
+                            
+                            <div class="space-y-6">
+                                <!-- Segment 1 -->
+                                <div class="p-3 bg-black/40 rounded-lg border border-zinc-800/60">
+                                    <h5 class="text-xs font-mono text-brand-neonGreen tracking-widest uppercase mb-2 border-b border-zinc-850 pb-1 flex justify-between">
+                                        <span>Tecnología</span> <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                                    </h5>
+                                    <p class="text-sm font-semibold text-zinc-300">CIO / CTO</p>
+                                    <p class="text-xs text-zinc-500 mt-1">Responsables de continuidad operativa, arquitectura, seguridad y ejecución tecnológica.</p>
+                                </div>
+                                <!-- Segment 2 -->
+                                <div class="p-3 bg-black/40 rounded-lg border border-zinc-800/60">
+                                    <h5 class="text-xs font-mono text-brand-neonGreen tracking-widest uppercase mb-2 border-b border-zinc-850 pb-1 flex justify-between">
+                                        <span>Producto y Negocio</span> <i data-lucide="box" class="w-3.5 h-3.5"></i>
+                                    </h5>
+                                    <p class="text-sm font-semibold text-zinc-300">CPO / Product Manager</p>
+                                    <p class="text-xs text-zinc-500 mt-1">Responsables de crecimiento digital, adopción y evolución de productos.</p>
+                                </div>
+                                <!-- Segment 3 -->
+                                <div class="p-3 bg-black/40 rounded-lg border border-zinc-800/60">
+                                    <h5 class="text-xs font-mono text-brand-neonGreen tracking-widest uppercase mb-2 border-b border-zinc-850 pb-1 flex justify-between">
+                                        <span>Comercial y Canales Digitales</span> <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                                    </h5>
+                                    <p class="text-sm font-semibold text-zinc-300">Gerente Comercial / Gerente de Canales Digitales</p>
+                                    <p class="text-xs text-zinc-500 mt-1">Responsables de generación de ingresos, experiencia digital y crecimiento.</p>
+                                </div>
+                                <!-- Segment 4 -->
+                                <div class="p-3 bg-black/40 rounded-lg border border-zinc-800/60">
+                                    <h5 class="text-xs font-mono text-brand-neonGreen tracking-widest uppercase mb-2 border-b border-zinc-850 pb-1 flex justify-between">
+                                        <span>Gestión y Ejecución</span> <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+                                    </h5>
+                                    <p class="text-sm font-semibold text-zinc-300">PMO / Gerente de Proyectos</p>
+                                    <p class="text-xs text-zinc-500 mt-1">Responsables de coordinación, alineación y cumplimiento de initiatives estratégicas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUNTO 4: Qué Implica Este Cambio (Perfectamente Alineado) -->
+                <div class="pt-24 mt-24 border-t border-zinc-900">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-4">
+                            <span class="text-xs font-mono text-zinc-500 tracking-wider">04 // EVOLUCIÓN DISCURSIVA</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-white mt-2">4. Qué Implica Este Cambio</h3>
+                        </div>
+                        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-6 bg-zinc-900/10 border border-zinc-900 rounded-lg">
+                                <span class="text-xxs font-mono text-zinc-600 uppercase tracking-widest block mb-2">Antes</span>
+                                <p class="text-zinc-400 text-sm leading-relaxed">La conversación estaba centrada principalmente en tecnología.</p>
+                            </div>
+                            <div class="p-6 bg-zinc-900/30 border border-brand-neonCyan/40 rounded-lg neon-border-cyan shadow-neon-glow-cyan">
+                                <span class="text-xxs font-mono text-brand-neonCyan uppercase tracking-widest block mb-3">Hoy</span>
+                                <p class="text-zinc-200 text-sm mb-4">La conversación debe incorporar:</p>
+                                
+                                <!-- Lista de Hoy con alineación matemática perfecta y balas de neón -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-mono text-zinc-300">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Riesgo.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Continuidad operacional.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Crecimiento.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Adopción.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Time-to-market.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Alineación organizacional.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Gobernanza.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan shrink-0"></span>
+                                        <span>Ejecución.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 p-5 bg-white text-black rounded-lg">
+                                <p class="text-xs font-mono uppercase tracking-widest mb-1 text-zinc-600">IMPACTO ESTRATÉGICO</p>
+                                <p class="text-sm font-semibold leading-relaxed">Esto amplía la relevancia de HF Solutions dentro de la organización y permite conectar con los verdaderos centros de decisión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUNTO 5: Dolor Real del ICP (Sectores Resaltados con Neón) -->
+                <div class="pt-24 mt-24 border-t border-zinc-900">
+                    <span class="text-xs font-mono text-zinc-500 tracking-wider">05 // DESAFÍOS DE MERCADO</span>
+                    <h3 class="text-3xl font-bold tracking-tight text-white mt-2 mb-12">5. Dolor Real del ICP</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- CIO / CTO (TECNOLOGÍA) -->
+                        <div class="p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-5 border-b border-zinc-800 pb-4">
+                                    <span class="text-sm font-bold text-white tracking-wide uppercase">CIO / CTO</span>
+                                    <!-- Categoría Resaltada con Neón -->
+                                    <span class="text-xxs font-mono text-brand-neonCyan bg-brand-neonCyan/10 border border-brand-neonCyan/30 px-3 py-1 rounded shadow-[0_0_10px_rgba(0,240,255,0.15)] font-bold tracking-widest">TECNOLOGÍA</span>
+                                </div>
+                                <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-zinc-400"></i> Principales desafíos:
+                                </p>
+                                <ul class="space-y-2.5 text-sm text-zinc-300 mb-6">
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonCyan mt-1 shrink-0 font-mono text-xs">•</span> Deuda técnica acumulada.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonCyan mt-1 shrink-0 font-mono text-xs">•</span> Presión por acelerar entregas.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonCyan mt-1 shrink-0 font-mono text-xs">•</span> Riesgo operativo.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonCyan mt-1 shrink-0 font-mono text-xs">•</span> Dependencia de proveedores poco flexibles.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonCyan mt-1 shrink-0 font-mono text-xs">•</span> Escasez de talento especializado.</li>
+                                </ul>
+                            </div>
+                            <div class="pt-4 border-t border-zinc-900 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-zinc-500 uppercase">Fuente:</span>
+                                <span class="text-xs font-semibold text-zinc-400 font-mono text-right">Technology Trends Outlook 2025 – McKinsey</span>
+                            </div>
+                        </div>
+
+                        <!-- CPO / Product Manager (PRODUCTO) -->
+                        <div class="p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-5 border-b border-zinc-800 pb-4">
+                                    <span class="text-sm font-bold text-white tracking-wide uppercase">CPO / Product Manager</span>
+                                    <!-- Categoría Resaltada con Neón -->
+                                    <span class="text-xxs font-mono text-brand-neonPurple bg-brand-neonPurple/10 border border-brand-neonPurple/30 px-3 py-1 rounded shadow-[0_0_10px_rgba(191,90,242,0.15)] font-bold tracking-widest">PRODUCTO</span>
+                                </div>
+                                <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-zinc-400"></i> Principales desafíos:
+                                </p>
+                                <ul class="space-y-2.5 text-sm text-zinc-300 mb-6">
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonPurple mt-1 shrink-0 font-mono text-xs">•</span> Time-to-market lento.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonPurple mt-1 shrink-0 font-mono text-xs">•</span> Retrabajo por validación insuficiente.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonPurple mt-1 shrink-0 font-mono text-xs">•</span> Priorización deficiente.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonPurple mt-1 shrink-0 font-mono text-xs">•</span> Desalineación entre negocio y tecnología.</li>
+                                </ul>
+                            </div>
+                            <div class="pt-4 border-t border-zinc-900 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-zinc-500 uppercase">Fuente:</span>
+                                <span class="text-xs font-semibold text-zinc-400 font-mono text-right">State of Product Management 2025 – Productboard</span>
+                            </div>
+                        </div>
+
+                        <!-- Comercial y Canales Digitales (NEGOCIO) -->
+                        <div class="p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-5 border-b border-zinc-800 pb-4">
+                                    <span class="text-sm font-bold text-white tracking-wide uppercase">Comercial y Canales</span>
+                                    <!-- Categoría Resaltada con Neón -->
+                                    <span class="text-xxs font-mono text-yellow-400 bg-yellow-400/10 border border-yellow-400/30 px-3 py-1 rounded shadow-[0_0_10px_rgba(250,204,21,0.15)] font-bold tracking-widest">NEGOCIO</span>
+                                </div>
+                                <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-zinc-400"></i> Principales desafíos:
+                                </p>
+                                <ul class="space-y-2.5 text-sm text-zinc-300 mb-6">
+                                    <li class="flex items-start gap-2"><span class="text-yellow-400 mt-1 shrink-0 font-mono text-xs">•</span> Crecimiento sostenible.</li>
+                                    <li class="flex items-start gap-2"><span class="text-yellow-400 mt-1 shrink-0 font-mono text-xs">•</span> Experiencias digitales consistentes.</li>
+                                    <li class="flex items-start gap-2"><span class="text-yellow-400 mt-1 shrink-0 font-mono text-xs">•</span> Integración entre canales.</li>
+                                    <li class="flex items-start gap-2"><span class="text-yellow-400 mt-1 shrink-0 font-mono text-xs">•</span> Dependencia tecnológica para alcanzar objetivos comerciales.</li>
+                                </ul>
+                            </div>
+                            <div class="pt-4 border-t border-zinc-900 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-zinc-500 uppercase">Fuente:</span>
+                                <span class="text-xs font-semibold text-zinc-400 font-mono text-right">Digital Transformation Insights 2025 – Deloitte</span>
+                            </div>
+                        </div>
+
+                        <!-- PMO y Proyectos (EJECUCIÓN) -->
+                        <div class="p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-5 border-b border-zinc-800 pb-4">
+                                    <span class="text-sm font-bold text-white tracking-wide uppercase">PMO y Proyectos</span>
+                                    <!-- Categoría Resaltada con Neón -->
+                                    <span class="text-xxs font-mono text-brand-neonGreen bg-brand-neonGreen/10 border border-brand-neonGreen/30 px-3 py-1 rounded shadow-[0_0_10px_rgba(0,255,135,0.15)] font-bold tracking-widest">EJECUCIÓN</span>
+                                </div>
+                                <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-zinc-400"></i> Principales desafíos:
+                                </p>
+                                <ul class="space-y-2.5 text-sm text-zinc-300 mb-6">
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonGreen mt-1 shrink-0 font-mono text-xs">•</span> Coordinación entre múltiples áreas.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonGreen mt-1 shrink-0 font-mono text-xs">•</span> Alineación de stakeholders.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonGreen mt-1 shrink-0 font-mono text-xs">•</span> Control de riesgo.</li>
+                                    <li class="flex items-start gap-2"><span class="text-brand-neonGreen mt-1 shrink-0 font-mono text-xs">•</span> Cumplimiento de objetivos estratégicos.</li>
+                                </ul>
+                            </div>
+                            <div class="pt-4 border-t border-zinc-900 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-zinc-500 uppercase">Fuente:</span>
+                                <span class="text-xs font-semibold text-zinc-400 font-mono text-right">Digital Transformation Insights 2025 – Deloitte</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: ARQUITECTURA (CONTIENE PUNTOS 6 Y 7, MÁS ESPACIO DE IMAGEN HORIZONTAL "Matriz HF 1.2.png") -->
+        <section id="arquitectura" class="py-24 border-b border-zinc-900 relative scroll-mt-24">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_100%,rgba(255,255,255,0.03),rgba(0,0,0,0))] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <!-- HEADER SECCIÓN -->
+                <div class="mb-20">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 border border-zinc-800 rounded-full text-xs font-mono tracking-widest text-zinc-400 mb-6 bg-zinc-900/30">
+                        <span class="w-2 h-2 rounded-full bg-brand-neonPurple animate-ping"></span> CONTENT STRATEGY
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 flex items-center gap-3">
+                        <i data-lucide="layout-grid" class="w-8 h-8 text-white"></i> Arquitectura Editorial
+                    </h2>
+                    <p class="text-zinc-400 text-lg max-w-2xl font-light">
+                        Diseño metodológico y de categorización para sustentar la autoridad, credibilidad y alcance operativo de la marca.
+                    </p>
+                </div>
+
+                <!-- PUNTO 6: Arquitectura Editorial Estratégica (Con Iconos en Pilares) -->
+                <div class="pt-12 border-t border-zinc-900">
+                    <h3 class="text-xs font-mono text-zinc-500 tracking-wider uppercase mb-8 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-brand-neonPurple rounded-full animate-pulse"></span> 6. Arquitectura Editorial Estratégica
+                    </h3>
+                    
+                    <!-- Objetivo de la Matriz -->
+                    <div class="p-8 bg-zinc-900/20 border border-zinc-800 rounded-xl mb-12">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div>
+                                <span class="text-xxs font-mono text-zinc-500 uppercase tracking-widest block mb-1">OBJETIVO DE LA MATRIZ EDITORIAL</span>
+                                <p class="text-lg font-medium text-white leading-relaxed">
+                                    Hacer visible la experiencia, metodología y capacidad de ejecución de HF Solutions para posicionarlo como partner tecnológico estratégico.
+                                </p>
+                            </div>
+                            <div class="shrink-0">
+                                <span class="text-xs font-mono text-zinc-400 bg-zinc-900 border border-zinc-800 px-3 py-2 rounded block text-center font-bold tracking-wider">
+                                    ESTRATEGIA EDITORIAL
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tres Pilares con Iconografía Premium -->
+                    <p class="text-sm font-mono text-zinc-500 uppercase tracking-wider mb-6">LA ESTRATEGIA EDITORIAL SE ESTRUCTURA SOBRE TRES PILARES. CADA PILAR CUMPLE UNA FUNCIÓN ESPECÍFICA DENTRO DEL POSICIONAMIENTO DE HF SOLUTIONS.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+                        <!-- Pilar 1 -->
+                        <div class="p-6 bg-zinc-900/40 border-l-2 border-brand-neonGreen rounded-r-xl">
+                            <div class="flex items-center gap-2.5 mb-3">
+                                <div class="p-1.5 bg-brand-neonGreen/10 text-brand-neonGreen rounded border border-brand-neonGreen/20 shadow-[0_0_10px_rgba(0,255,135,0.1)]">
+                                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-xs font-mono text-zinc-400">PILAR 1</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-4">Identidad de Marca</h4>
+                            <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-2">Objetivo:</p>
+                            <p class="text-sm text-zinc-300 leading-relaxed mb-4">Hacer visible cómo piensa HF Solutions.</p>
+                            <div class="space-y-1 text-xs text-zinc-500">
+                                <p>• No busca vender servicios.</p>
+                                <p>• Busca construir credibilidad.</p>
+                                <p>• Demuestra visión, metodología y filosofía de trabajo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Pilar 2 -->
+                        <div class="p-6 bg-zinc-900/40 border-l-2 border-brand-neonCyan rounded-r-xl">
+                            <div class="flex items-center gap-2.5 mb-3">
+                                <div class="p-1.5 bg-brand-neonCyan/10 text-brand-neonCyan rounded border border-brand-neonCyan/20 shadow-[0_0_10px_rgba(0,240,255,0.1)]">
+                                    <i data-lucide="layers" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-xs font-mono text-zinc-400">PILAR 2</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-4">Línea de Productos</h4>
+                            <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-2">Objetivo:</p>
+                            <p class="text-sm text-zinc-300 leading-relaxed mb-4">Hacer visible qué problemas resuelve HF Solutions.</p>
+                            <div class="space-y-1 text-xs text-zinc-500">
+                                <p>• No desde la descripción de servicios.</p>
+                                <p>• Sino desde el impacto que generan en el negocio.</p>
+                            </div>
+                        </div>
+
+                        <!-- Pilar 3 -->
+                        <div class="p-6 bg-zinc-900/40 border-l-2 border-brand-neonPurple rounded-r-xl">
+                            <div class="flex items-center gap-2.5 mb-3">
+                                <div class="p-1.5 bg-brand-neonPurple/10 text-brand-neonPurple rounded border border-brand-neonPurple/20 shadow-[0_0_10px_rgba(191,90,242,0.1)]">
+                                    <i data-lucide="award" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-xs font-mono text-zinc-400">PILAR 3</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-4">Experiencias</h4>
+                            <p class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-2">Objetivo:</p>
+                            <p class="text-sm text-zinc-300 leading-relaxed mb-4">Demostrar evidencia de ejecución.</p>
+                            <div class="space-y-1 text-xs text-zinc-500">
+                                <p>• Transformar experiencia acumulada en confianza visible para el mercado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUNTO 7: Categorías Editoriales (Con Iconos y Títulos Altamente Resaltados con Neón - Alternando Azul y Verde) -->
+                <div class="pt-24 mt-24 border-t border-zinc-900">
+                    <h3 class="text-xs font-mono text-zinc-500 tracking-wider uppercase mb-12 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-brand-neonPurple rounded-full animate-pulse"></span> 7. Categorías Editoriales
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <!-- Categoría 1 [AZUL] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonCyan hover:shadow-neon-glow-cyan transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonCyan tracking-wide">Visión de Industria</h4>
+                                <div class="p-2.5 bg-brand-neonCyan/10 rounded-lg border border-brand-neonCyan/30 text-brand-neonCyan shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+                                    <i data-lucide="globe" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Porque los decisores siguen a empresas que entienden su mercado.</p>
+                                <p><span class="text-xs font-mono text-brand-neonCyan block font-bold uppercase tracking-wider">Objetivo</span> Posicionar autoridad.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Necesidad de anticipar riesgos y tendencias.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato recomendado</span> Carrusel, Artículo, Insight ejecutivo</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Consultivo y observacional.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 2 [VERDE] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonGreen hover:shadow-neon-glow-green transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonGreen tracking-wide">Filosofía de Trabajo HF</h4>
+                                <div class="p-2.5 bg-brand-neonGreen/10 rounded-lg border border-brand-neonGreen/30 text-brand-neonGreen shadow-[0_0_12px_rgba(0,255,135,0.25)]">
+                                    <i data-lucide="heart-handshake" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Para diferenciar la forma de pensar de HF respecto a consultoras tradicionales.</p>
+                                <p><span class="text-xs font-mono text-brand-neonGreen block font-bold uppercase tracking-wider">Objetivo</span> Construir preferencia.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Necesidad de partners más involucrados.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Texto + imagen, Artículo, Video corto</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Experto y cercano.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 3 [AZUL] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonCyan hover:shadow-neon-glow-cyan transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonCyan tracking-wide">Metodología HF</h4>
+                                <div class="p-2.5 bg-brand-neonCyan/10 rounded-lg border border-brand-neonCyan/30 text-brand-neonCyan shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+                                    <i data-lucide="workflow" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Porque la metodología es un activo estratégico.</p>
+                                <p><span class="text-xs font-mono text-brand-neonCyan block font-bold uppercase tracking-wider">Objetivo</span> Reducir incertidumbre.</p>
+                                <p><span class="text-xs font-mono text-zinc-555 block font-bold uppercase tracking-wider">Problema del ICP</span> Riesgo de ejecución.</p>
+                                <p><span class="text-xs font-mono text-zinc-555 block font-bold uppercase tracking-wider">Formato</span> Infografía, Carrusel, Caso práctico</p>
+                                <p><span class="text-xs font-mono text-zinc-555 block font-bold uppercase tracking-wider">Tono</span> Ejecutivo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 4 [VERDE] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonGreen hover:shadow-neon-glow-green transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonGreen tracking-wide">Staffing Estratégico</h4>
+                                <div class="p-2.5 bg-brand-neonGreen/10 rounded-lg border border-brand-neonGreen/30 text-brand-neonGreen shadow-[0_0_12px_rgba(0,255,135,0.25)]">
+                                    <i data-lucide="users-round" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Para cambiar la percepción tradicional del staffing.</p>
+                                <p><span class="text-xs font-mono text-brand-neonGreen block font-bold uppercase tracking-wider">Objetivo</span> Posicionar continuidad operativa.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Rotación y pérdida de conocimiento.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Caso, Comparativo, Artículo</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Consultivo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 5 [AZUL] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonCyan hover:shadow-neon-glow-cyan transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonCyan tracking-wide">Product Discovery y Consultoría</h4>
+                                <div class="p-2.5 bg-brand-neonCyan/10 rounded-lg border border-brand-neonCyan/30 text-brand-neonCyan shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+                                    <i data-lucide="search-code" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Porque la mayor parte del riesgo ocurre antes de desarrollar.</p>
+                                <p><span class="text-xs font-mono text-brand-neonCyan block font-bold uppercase tracking-wider">Objetivo</span> Posicionar reducción de incertidumbre.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Decisiones sin validación.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Carrusel, Caso, Artículo</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Estratégico.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 6 [VERDE] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonGreen hover:shadow-neon-glow-green transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonGreen tracking-wide">Desarrollo y Product Delivery</h4>
+                                <div class="p-2.5 bg-brand-neonGreen/10 rounded-lg border border-brand-neonGreen/30 text-brand-neonGreen shadow-[0_0_12px_rgba(0,255,135,0.25)]">
+                                    <i data-lucide="rocket" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Para demostrar capacidad de ejecución.</p>
+                                <p><span class="text-xs font-mono text-brand-neonGreen block font-bold uppercase tracking-wider">Objetivo</span> Generar confianza.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Brecha entre estrategia y ejecución.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Caso de uso, Infografía, Video</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Ejecutivo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 7 [AZUL] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonCyan hover:shadow-neon-glow-cyan transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonCyan tracking-wide">Casos de Éxito</h4>
+                                <div class="p-2.5 bg-brand-neonCyan/10 rounded-lg border border-brand-neonCyan/30 text-brand-neonCyan shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+                                    <i data-lucide="trophy" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Porque la experiencia debe ser visible.</p>
+                                <p><span class="text-xs font-mono text-brand-neonCyan block font-bold uppercase tracking-wider">Objetivo</span> Validación social.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Necesidad de evidencia.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Caso, Video, Testimonio</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Concreto.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 8 [VERDE] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonGreen hover:shadow-neon-glow-green transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonGreen tracking-wide">Casos de Uso</h4>
+                                <div class="p-2.5 bg-brand-neonGreen/10 rounded-lg border border-brand-neonGreen/30 text-brand-neonGreen shadow-[0_0_12px_rgba(0,255,135,0.25)]">
+                                    <i data-lucide="briefcase" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Para conectar problemas reales con soluciones reales.</p>
+                                <p><span class="text-xs font-mono text-brand-neonGreen block font-bold uppercase tracking-wider">Objetivo</span> Identificación.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Complejidad de implementación.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Carrusel, Diagrama, Infografía</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Práctico.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 9 [AZUL] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonCyan hover:shadow-neon-glow-cyan transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonCyan tracking-wide">Eventos y Participación en Industria</h4>
+                                <div class="p-2.5 bg-brand-neonCyan/10 rounded-lg border border-brand-neonCyan/30 text-brand-neonCyan shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+                                    <i data-lucide="megaphone" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Para demostrar presencia activa en el ecosistema.</p>
+                                <p><span class="text-xs font-mono text-brand-neonCyan block font-bold uppercase tracking-wider">Objetivo</span> Visibilidad y autoridad.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Fotografía, Resumen ejecutivo, Cobertura</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Identificación.</p>
+                            </div>
+                        </div>
+
+                        <!-- Categoría 10 [VERDE] -->
+                        <div class="p-6 bg-zinc-900/20 border border-zinc-800 rounded-xl relative hover:border-brand-neonGreen hover:shadow-neon-glow-green transition-all duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-3">
+                                <h4 class="text-xl font-extrabold text-brand-neonGreen tracking-wide">Innovación y Tendencias</h4>
+                                <div class="p-2.5 bg-brand-neonGreen/10 rounded-lg border border-brand-neonGreen/30 text-brand-neonGreen shadow-[0_0_12px_rgba(0,255,135,0.25)]">
+                                    <i data-lucide="zap" class="w-5 h-5 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">¿Por qué existe?</span> Para demostrar actualización permanente.</p>
+                                <p><span class="text-xs font-mono text-brand-neonGreen block font-bold uppercase tracking-wider">Objetivo</span> Posicionamiento.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Problema del ICP</span> Necesidad de adaptación tecnológica.</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Formato</span> Insight, Análisis, Artículo</p>
+                                <p><span class="text-xs font-mono text-zinc-550 block font-bold uppercase tracking-wider">Tono</span> Experto.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ESPACIO DE IMAGEN HORIZONTAL CON CONTENEDOR ESPECIAL "Matriz HF 1.2.png" (REQUERIMIENTO EXPLICITO) -->
+                <div class="mt-20 pt-12 border-t border-zinc-900">
+                    <span class="text-xs font-mono text-zinc-500 tracking-wider uppercase block mb-4">MAPA COMPLETO // EXPOSICIÓN GRÁFICA DE LA MATRIZ</span>
+                    
+                    <!-- Contenedor Matriz HF 1.2.png con Borde Neon Azul y Fallback interactivo por si falla la carga local -->
+                    <div class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl p-6 md:p-8 flex flex-col items-center justify-center min-h-[480px] relative overflow-hidden shadow-neon-glow-cyan neon-border-cyan transition-all duration-500">
+                        <!-- Red Decorativa de Ingeniería en el fondo -->
+                        <div class="absolute inset-0 bg-[linear-gradient(to_right,#141419_1px,transparent_1px),linear-gradient(to_bottom,#141419_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-45 pointer-events-none"></div>
+                        
+                        <!-- Elemento Imagen "Matriz HF 1.2.png" -->
+                        <img src="Matriz HF 1.2.png" alt="Matriz Editorial Integrada - Matriz HF 1.2.png" class="w-full h-auto max-h-[500px] object-contain relative z-10 transition-transform duration-500 hover:scale-[1.02]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        
+                        <!-- Premium Fallback Representativo por si falla la carga de la imagen local -->
+                        <div class="hidden flex-col items-center justify-center text-center max-w-3xl relative z-10 py-10">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-mono tracking-widest text-brand-neonCyan mb-6">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-neonCyan animate-pulse"></span> CONTENEDOR DE LA MATRIZ DE POSICIONAMIENTO
+                            </div>
+                            <h4 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-4">Matriz HF 1.2.png</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed mb-8 max-w-xl">
+                                Representación integrada del plano de contenidos editoriales de alto impacto. Muestra de manera horizontal la intersección entre los 3 pilares estructurales, los dolores críticos de los ICP y las 10 categorías operativas.
+                            </p>
+                            
+                            <!-- Maqueta interactiva visual de la Matriz para mantener alta estética -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl text-left font-mono text-[11px]">
+                                <div class="p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-white font-bold">1. PILARES CLAVE</span>
+                                        <i data-lucide="layers" class="w-4 h-4 text-brand-neonCyan"></i>
+                                    </div>
+                                    <p class="text-zinc-500 text-[10px]">Identidad de Marca, Línea de Productos y Experiencias de Ejecución.</p>
+                                </div>
+                                <div class="p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-white font-bold">2. STAKEHOLDERS</span>
+                                        <i data-lucide="users" class="w-4 h-4 text-brand-neonCyan"></i>
+                                    </div>
+                                    <p class="text-zinc-500 text-[10px]">CIO/CTO, CPO/PM, Comercial/Digital, PMO/Proyectos.</p>
+                                </div>
+                                <div class="p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-white font-bold">3. ENFOQUE</span>
+                                        <i data-lucide="shield-check" class="w-4 h-4 text-brand-neonCyan"></i>
+                                    </div>
+                                    <p class="text-zinc-500 text-[10px]">Reducción de riesgo, continuidad operativa, crecimiento y autoridad.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Marca Técnica del archivo en la esquina inferior derecha -->
+                        <div class="absolute bottom-4 right-4 text-[10px] font-mono text-zinc-600 tracking-widest uppercase z-20">
+                            FILE SOURCE: Matriz HF 1.2.png
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: PLAN DE CONTENIDO (NUEVO MENÚ Y LIENZO TÁCTICO) -->
+        <section id="plan" class="py-24 border-b border-zinc-900 bg-zinc-950 relative scroll-mt-24">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(191,90,242,0.03),rgba(0,0,0,0))] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <!-- HEADER SECCIÓN -->
+                <div class="mb-12">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 border border-zinc-800 rounded-full text-xs font-mono tracking-widest text-zinc-400 mb-6 bg-zinc-900/30">
+                        <span class="w-2 h-2 rounded-full bg-brand-neonPurple animate-ping"></span> EDITORIAL CALENDAR
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 flex items-center gap-3">
+                        <i data-lucide="calendar" class="w-8 h-8 text-white"></i> Plan de Contenido
+                    </h2>
+                    <p class="text-zinc-400 text-lg max-w-2xl font-light">
+                        Planificación estratégica y cronograma del despliegue táctico editorial de HF Solutions.
+                    </p>
+                </div>
+
+                <!-- Contenedor del Plan en Construcción con Borde Neón Púrpura -->
+                <div class="p-8 bg-zinc-900/10 border border-brand-neonPurple/40 rounded-xl neon-border-purple shadow-neon-glow-purple flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3.5 bg-brand-neonPurple/10 text-brand-neonPurple rounded-lg border border-brand-neonPurple/20 animate-pulse">
+                            <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-1">Plan de Contenido Detallado</h4>
+                            <p class="text-sm text-zinc-400">Estructurando las fechas clave de publicación, asignación de canales y formatos tácticos.</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-zinc-500 bg-zinc-900 border border-zinc-800 px-3 py-2 rounded shrink-0">
+                        FASE DE DESPLIEGUE TÁCTICO
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PROCESO (CONTIENE PUNTO 8 - DESTACADO CON NEÓN VERDE) -->
+        <section id="proceso" class="py-24 bg-black relative scroll-mt-24">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_120%,rgba(0,255,135,0.04),rgba(255,255,255,0))] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <!-- HEADER SECCIÓN -->
+                <div class="mb-20">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 border border-zinc-800 rounded-full text-xs font-mono tracking-widest text-zinc-400 mb-6 bg-zinc-900/30">
+                        <span class="w-2 h-2 rounded-full bg-brand-neonGreen animate-ping"></span> WORKFLOW
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 flex items-center gap-3">
+                        <i data-lucide="git-commit" class="w-8 h-8 text-white"></i> Modelo de Proceso
+                    </h2>
+                    <p class="text-zinc-400 text-lg max-w-2xl font-light">
+                        Protocolo operativo para garantizar la consistencia, velocidad y gobernanza en el flujo constante de publicaciones.
+                    </p>
+                </div>
+
+                <!-- PUNTO 8: Participación Esperada de HF Solutions -->
+                <div class="pt-12 border-t border-zinc-900">
+                    <h3 class="text-xs font-mono text-zinc-500 tracking-wider uppercase mb-4 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-brand-neonGreen rounded-full"></span> 8. Participación Esperada de HF Solutions
+                    </h3>
+                    <p class="text-sm text-zinc-400 mb-12 max-w-2xl">Para asegurar continuidad operativa del calendario editorial, cada contenido podrá desarrollarse mediante tres alternativas previamente definidas.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Opción A -->
+                        <div class="p-8 bg-zinc-900/30 border border-zinc-800 rounded-xl relative hover:border-zinc-700 transition-all duration-300 flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-xs font-mono text-white bg-zinc-800 border border-zinc-700 px-2 py-0.5 rounded">OPCIÓN A</span>
+                                    <i data-lucide="image" class="w-5 h-5 text-zinc-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-4">Material proporcionado por HF Solutions.</h4>
+                                <ul class="space-y-2 text-xs font-mono text-zinc-400">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Fotografías.</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Eventos.</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Equipos.</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Instalaciones.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Opción B -->
+                        <div class="p-8 bg-zinc-900/30 border border-zinc-800 rounded-xl relative hover:border-zinc-700 transition-all duration-300 flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-xs font-mono text-white bg-zinc-800 border border-zinc-700 px-2 py-0.5 rounded">OPCIÓN B</span>
+                                    <i data-lucide="layers" class="w-5 h-5 text-zinc-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-4">Diseño gráfico corporativo.</h4>
+                                <p class="text-xs text-zinc-400 mb-4 font-mono">Basado en branding HF Solutions.</p>
+                                <ul class="space-y-2 text-xs font-mono text-zinc-400">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Fondos planos.</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Diagramas.</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full"></span> Visuales conceptuales.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Opción C -->
+                        <div class="p-8 bg-zinc-900/30 border border-zinc-800 rounded-xl relative hover:border-zinc-700 transition-all duration-300 flex flex-col justify-between neon-border-white">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-xs font-mono text-white bg-zinc-800 border border-zinc-700 px-2 py-0.5 rounded">OPCIÓN C</span>
+                                    <i data-lucide="camera" class="w-5 h-5 text-zinc-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-4">Fotografía de stock representativa.</h4>
+                                <p class="text-xs text-zinc-400 font-mono leading-relaxed text-zinc-300">
+                                    Permite mantener la continuidad del calendario sin depender de activos externos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regla Operativa (Con un llamativo Neon de alerta verde de Gobernabilidad) -->
+                    <div class="mt-12 p-6 bg-black border border-brand-neonGreen rounded-xl shadow-neon-glow-green">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2.5 bg-zinc-900 border border-zinc-800 text-brand-neonGreen rounded-lg">
+                                    <i data-lucide="alert-octagon" class="w-6 h-6 animate-pulse"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xxs font-mono text-brand-neonGreen tracking-widest uppercase block">REGLA CRÍTICA DE GOBERNANZA</span>
+                                    <h4 class="text-lg font-bold text-white">Regla Operativa</h4>
+                                </div>
+                            </div>
+                            <p class="text-sm text-zinc-300 font-medium max-w-xl leading-relaxed">
+                                Si la fecha de publicación se aproxima y no se dispone del material requerido, se utilizará automáticamente la alternativa previamente definida para evitar retrasos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER EJECUTIVO -->
+    <footer class="bg-black border-t border-zinc-900 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-500 font-mono">
+            <div>
+                &copy; 2026 HF Solutions. Todos los derechos reservados.
+            </div>
+            <div class="flex items-center space-x-6">
+                <span>DOCUMENTO EJECUTIVO DE ARQUITECTURA DE INFORMACIÓN</span>
+                <span>•</span>
+                <span>M-TI INTEGRATION</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript para manejo del Acordeón Interactivo y smooth navigation -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebarMenu = document.getElementById('sidebarMenu');
-            const mobileMenuButton = document.getElementById('mobileMenuButton');
-            const navMenuItems = document.querySelectorAll('.sidebar-item');
-            const contentSections = document.querySelectorAll('section[id]');
+        // Inicializar todos los iconos de Lucide
+        lucide.createIcons();
 
-            // Mobile menu toggle
-            mobileMenuButton.addEventListener('click', () => {
-                sidebarMenu.classList.toggle('-translate-x-full');
+        // Función del Acordeón Interactivo (Punto 2)
+        function toggleAccordion(trigger) {
+            const currentItem = trigger.parentElement;
+            const content = currentItem.querySelector('.accordion-content');
+            const isActive = currentItem.classList.contains('active');
+
+            // Cerrar todos los acordeones abiertos
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.accordion-content').style.maxHeight = '0';
+                item.querySelector('.accordion-content').style.opacity = '0';
             });
 
-            // Close sidebar when clicking menu items on small screens
-            navMenuItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    if (window.innerWidth < 1024) {
-                        sidebarMenu.classList.add('-translate-x-full');
-                    }
-                });
-            });
+            // Si el actual no estaba activo, abrirlo
+            if (!isActive) {
+                currentItem.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.style.opacity = '1';
+            }
+        }
 
-            // Clean active classes helper
-            const resetActiveNav = () => {
-                navMenuItems.forEach(item => {
-                    item.firstElementChild.classList.remove('active-nav-item');
-                });
-            };
-
-            // Highlighting Navigation Menu Based on Scroll Location
-            const updateActiveNavItemOnScroll = () => {
-                let currentActiveSectionId = '';
-                const scrollOffset = window.scrollY + 180; // Adjusted for sticky header
-
-                contentSections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollOffset >= sectionTop && scrollOffset < sectionTop + sectionHeight) {
-                        currentActiveSectionId = section.getAttribute('id');
-                    }
-                });
-
-                if (currentActiveSectionId) {
-                    resetActiveNav();
-                    const matchingLink = document.querySelector(`.sidebar-item a[href="#${currentActiveSectionId}"]`);
-                    if (matchingLink) {
-                        matchingLink.classList.add('active-nav-item');
-                    }
-                }
-            };
-
-            // Event Listeners
-            window.addEventListener('scroll', updateActiveNavItemOnScroll);
-            window.addEventListener('resize', updateActiveNavItemOnScroll);
-            
-            // Initial call
-            updateActiveNavItemOnScroll();
+        // Auto-abrir el primer aprendizaje de forma interactiva en la carga inicial
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstTrigger = document.querySelector('.accordion-trigger');
+            if (firstTrigger) {
+                toggleAccordion(firstTrigger);
+            }
         });
     </script>
 </body>
