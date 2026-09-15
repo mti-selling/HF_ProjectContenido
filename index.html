@@ -88,7 +88,8 @@ body {
       <a href="#timeline" class="text-brand-naranja hover:text-white transition-colors pb-1">TIMELINE</a>
       <a href="#icp" class="text-zinc-300 hover:text-brand-verde transition-colors pb-1">ICP</a>
       <a href="#arquitectura" class="text-zinc-300 hover:text-brand-verde transition-colors pb-1">ARQUITECTURA</a>
-      <a href="#recursos" class="text-brand-verde hover:text-white transition-colors pb-1">RECURSOS</a>
+      <a href="#directorio" class="text-brand-verde hover:text-white transition-colors pb-1">CONVERSACIONES</a>
+      <a href="#recursos" class="text-zinc-300 hover:text-brand-verde transition-colors pb-1">RECURSOS</a>
     </nav>
     <!-- Logo Derecho -->
     <div class="flex items-center">
@@ -100,13 +101,13 @@ body {
     </div>
   </div>
 </header>
-
-<div class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/90 backdrop-blur-lg border border-zinc-700 px-4 py-3 rounded-full flex items-center space-x-4 text-[10px] tracking-widest text-zinc-300 shadow-2xl">
+<div class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/90 backdrop-blur-lg border border-zinc-700 px-4 py-3 rounded-full flex items-center space-x-3 text-[10px] tracking-widest text-zinc-300 shadow-2xl">
   <a href="#home" class="hover:text-brand-verde font-montserrat font-bold">HOME</a>
   <a href="#timeline" class="text-brand-naranja font-montserrat font-bold">TIMELINE</a>
   <a href="#icp" class="hover:text-brand-verde font-montserrat font-bold">ICP</a>
   <a href="#arquitectura" class="hover:text-brand-verde font-montserrat font-bold">ARQ</a>
-  <a href="#recursos" class="text-brand-verde font-montserrat font-bold">REC</a>
+  <a href="#directorio" class="text-brand-verde font-montserrat font-bold">CONVERSACIONES</a>
+  <a href="#recursos" class="hover:text-white font-montserrat font-bold">REC</a>
 </div>
 
 <main class="flex-grow">
@@ -114,7 +115,7 @@ body {
   <section id="home" class="py-16 md:py-24 border-b border-zinc-800 scroll-mt-24">
     <div class="max-w-7xl mx-auto px-6">
       
-      <!-- NUEVO TÍTULO PRINCIPAL SOLICITADO -->
+      <!-- TÍTULO PRINCIPAL -->
       <div class="mb-16 pb-10 border-b border-zinc-800">
         <div class="inline-block px-3 py-1 bg-zinc-900 border border-zinc-700 rounded-full text-[10px] font-mono tracking-widest text-zinc-400 uppercase mb-4">
           ESTRATEGIA EDITORIAL
@@ -638,7 +639,7 @@ body {
         </div>
         <div class="p-8 bg-[#1f1d1c] border-l-4 border-l-zinc-500 border border-zinc-800 rounded-r-2xl space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-zinc-400 font-bold uppercase">PILAR 3</span>
+            <span class="text-xs font-mono text-zinc-500 font-bold uppercase">PILAR 3</span>
             <div class="p-2 bg-zinc-900 text-zinc-300 rounded-lg">
               <i data-lucide="award" class="w-5 h-5"></i>
             </div>
@@ -802,6 +803,82 @@ body {
     </div>
   </section>
 
+  <!-- SECTION: DIRECTORIO Y RESPUESTAS BBDD LINKEDIN -->
+  <section id="directorio" class="py-24 border-b border-zinc-800 bg-[#1f1d1c] scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="px-3 py-1 border border-brand-verde/40 rounded-full text-xs font-mono tracking-widest text-brand-verde uppercase">
+            RED DE CONTACTOS & RESPUESTAS
+          </span>
+          <h2 class="text-4xl md:text-5xl font-extrabold text-white font-montserrat tracking-tight flex items-center gap-3 mt-4">
+            <i data-lucide="network" class="w-8 h-8 text-brand-verde"></i> Conversaciones
+          </h2>
+          <p class="text-zinc-400 text-sm mt-2 font-light max-w-3xl">
+            Explora la base de datos de tomadores de decisiones, sus perfiles profesionales, sector, área y las respuestas accionables obtenidas en las campañas de prospección.
+          </p>
+        </div>
+        <!-- Botón Ver lista completa -->
+        <div>
+          <a href="https://docs.google.com/spreadsheets/d/1cXi3AdLl1wE3MUrQTecVkJkI6OGEIUA7pJRnu18BGF8/edit?gid=1321120659#gid=1321120659" target="_blank" rel="noopener noreferrer" class="px-5 py-3 bg-brand-verde text-black font-bold text-xs rounded-xl flex items-center gap-2 hover:bg-teal-400 transition-colors shadow-lg">
+            <i data-lucide="external-link" class="w-4 h-4"></i> Ver lista completa
+          </a>
+        </div>
+      </div>
+
+      <!-- Filtros y Buscador interactivo -->
+      <div class="bg-[#242221] border border-zinc-800 p-6 rounded-2xl mb-8 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Input de búsqueda -->
+          <div class="relative md:col-span-2">
+            <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-4 h-4"></i>
+            </span>
+            <input type="text" id="search-contacts" placeholder="Buscar por empresa, nombre, cargo o respuesta..." onkeyup="filterContacts()" class="w-full pl-11 pr-4 py-3 bg-black/50 border border-zinc-700 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-verde transition-colors">
+          </div>
+          <!-- Filtro por sector -->
+          <div>
+            <select id="filter-sector" onchange="filterContacts()" class="w-full px-4 py-3 bg-black/50 border border-zinc-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-verde transition-colors">
+              <option value="">Todos los Sectores</option>
+              <option value="Minero">Minero</option>
+              <option value="Financiero">Financiero</option>
+              <option value="Energía">Energía</option>
+              <option value="Seguros">Seguros</option>
+              <option value="Retail">Retail</option>
+              <option value="Salud">Salud</option>
+              <option value="Bancario">Bancario</option>
+              <option value="Utilities">Utilities</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs font-mono text-zinc-400 pt-2 border-t border-zinc-800">
+          <span id="contacts-count">Mostrando registros clave</span>
+          <span class="text-brand-verde">Haz clic en el botón de LinkedIn para visitar el perfil</span>
+        </div>
+      </div>
+
+      <!-- Contenedor de Tabla con Altura Fija y Scrollbar -->
+      <div class="bg-[#242221] border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
+        <div class="max-h-[550px] overflow-y-auto relative w-full">
+          <table class="w-full text-left border-collapse">
+            <thead class="sticky top-0 bg-[#1c1a19] text-[10px] font-mono text-zinc-400 uppercase tracking-widest border-b border-zinc-800 z-10">
+              <tr>
+                <th class="p-4">Empresa / Contacto</th>
+                <th class="p-4">Sector / Área</th>
+                <th class="p-4">Acción</th>
+                <th class="p-4">Respuesta Registrada</th>
+                <th class="p-4 text-right">Perfil</th>
+              </tr>
+            </thead>
+            <tbody id="contacts-table-body" class="divide-y divide-zinc-800/60 text-xs">
+              <!-- Filas inyectadas por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SECTION 5: RECURSOS Y ACCESOS DIRECTOS -->
   <section id="recursos" class="py-24 border-b border-zinc-800 bg-[#181716] scroll-mt-24">
     <div class="max-w-7xl mx-auto px-6">
@@ -933,6 +1010,309 @@ body {
 <!-- INTERACTION LOGIC -->
 <script>
 lucide.createIcons();
+
+// Base de datos completa procesada de contactos LinkedIn (Actualizada con todos los registros)
+const contactsData = [
+  {
+    empresa: "BHP",
+    nombre: "Martin",
+    cargo: "CIO Specialist Control BHP CA",
+    area: "tecnológica",
+    linkedin: "https://www.linkedin.com/in/martin-antonio-garrido-rosales-56539b266/",
+    sector: "Minero",
+    respuesta: "Hola Jocelynne, gracias por tu mensaje, y mis disculpas la demora en responder. Desde mi experiencia en operaciones mineras... hoy veo que el foco está en ambas líneas: optimizar lo que ya existe y, al mismo tiempo, identificar oportunidades donde la tecnología permita generar un cambio relevante.",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Terra Nova Technologies",
+    nombre: "Ignacio",
+    cargo: "General Manager LATAM",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/ignaciofernandezquerejazu/",
+    sector: "Minero",
+    respuesta: "Hola gracias, que servicios ofreces?",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "HIMOINSA",
+    nombre: "Carlos",
+    cargo: "Managing Director",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/carlos-castro-maldonado-7438163b/",
+    sector: "Energía",
+    respuesta: "Hola Jocelynne. Gracias por tu mensaje. Estamos arrancando nuestra operación en Chile. Cuentame que servicio específicamente están ofreciendo?",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Prosegur",
+    nombre: "Dagoberto",
+    cargo: "GERENTE TECNOLOGIA SECURITY",
+    area: "tecnológica",
+    linkedin: "https://www.linkedin.com/in/dagoberto-cordova-cortes-92937b70/",
+    sector: "Financiero",
+    respuesta: "Hola , cuéntame mas",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Miniso Chile",
+    nombre: "Gabriel",
+    cargo: "Gerente Comercial",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/gabriel-alvarez-management",
+    sector: "Retail",
+    respuesta: "Hola Jocelynne, un gusto saludarte. De acuerdo con tu última reflexión, nos identifica bastante",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Isapre Esencial",
+    nombre: "Manuel",
+    cargo: "Director",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/manuel-inostroza-palma-23098595",
+    sector: "Seguros",
+    respuesta: "Hola Jocelynne estoy en el nivel corporativo y estamos en ambas direcciones en optimizar el modelo vigente pero desarrollando nuevos productos para el nuevo escenario",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Minetec",
+    nombre: "José",
+    cargo: "Gerente comercial-Perú",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/jos%C3%A9-artemio-r-b8074725",
+    sector: "Minero",
+    respuesta: "Hay de ambos, con la inteligencia artificial se optimiza y por el otro lado, se están creando nuevas tecnologías. En todas las áreas",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Veltis Latam",
+    nombre: "Cristian",
+    cargo: "Subgerente Comercial Mantenimiento",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/cristian-salgado-sanhueza-5929a426",
+    sector: "Minero",
+    respuesta: "Holaaa! Ambas cosas!",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Sanitas",
+    nombre: "Renzo",
+    cargo: "Sub Gerente Comercial Canal Directo",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/renzo-cuadros-gomez",
+    sector: "Seguros",
+    respuesta: "Hola Jocelyn , Gracias a ti también , En resumen te puedo decir , que hay q tener lo tradicional , pero con miras de innovación y adaptarnos a lo que el usuario nos pide . Que tengas buena tarde . Saludos",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Credicorp Capital",
+    nombre: "Daniel",
+    cargo: "Gerente General Credicorp Capital Bolsa - Executive Director",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/danielguzmang",
+    sector: "Financiero",
+    respuesta: "Gracias Jocelynne por la info, pero por el momento no estamos requiriendo este tipo de servicios. Sigamos en contacto por favor.",
+    accion: "Nutrir"
+  },
+  {
+    empresa: "Carrasco Créditos",
+    nombre: "Ariel",
+    cargo: "Gerente comercial",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/ariel-huenun-26110b35a",
+    sector: "Retail",
+    respuesta: "Hola buenas tardes Jocelynne como estas?",
+    accion: "Nutrir"
+  },
+  {
+    empresa: "Fourthane",
+    nombre: "Cecil",
+    cargo: "Fundador & Director",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/cecil-fourt-7819a730",
+    sector: "Minero",
+    respuesta: "Entiendo",
+    accion: "Nutrir"
+  },
+  {
+    empresa: "Alianza Fiduciaria - Alianza Valores",
+    nombre: "Octavio",
+    cargo: "Director Comercial de Negocios de Inversión",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/octaviosocarrasricardo-comercial",
+    sector: "Financiero",
+    respuesta: "Octavio reacted 👏",
+    accion: "Nutrir"
+  },
+  {
+    empresa: "CAJA CUSCO",
+    nombre: "Luis",
+    cargo: "Gerente Comercial",
+    area: "comercial",
+    linkedin: "https://www.linkedin.com/in/luiswatanabetelleria",
+    sector: "Financiero",
+    respuesta: "Hola Jocelyn que tal",
+    accion: "Nutrir"
+  },
+  {
+    empresa: "Seguros del Estado",
+    nombre: "Javier",
+    cargo: "Director Generales Sucursal",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/javier-cardenas-miranda-57366552",
+    sector: "Seguros",
+    respuesta: "Hola Jocelynne",
+    accion: "Retomar"
+  },
+  {
+    empresa: "ChilePay",
+    nombre: "Marcela",
+    cargo: "Director y Miembro Mesa de Contenidos",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/marcela-nu%C3%B1ez-valenzuela",
+    sector: "Financiero",
+    respuesta: "Pendiente / Miembro Mesa de Contenidos",
+    accion: "Retomar"
+  },
+  {
+    empresa: "Grupo Security",
+    nombre: "Hernan",
+    cargo: "Corporate CTO - Technology Manager",
+    area: "tecnológica",
+    linkedin: "https://www.linkedin.com/in/hernanbattiston",
+    sector: "Financiero",
+    respuesta: "Directorio de tomadores de decisiones tecnológicas - Grupo Security",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "KUPFER HNOS.",
+    nombre: "Viviana",
+    cargo: "Gerente TI",
+    area: "tecnológica",
+    linkedin: "https://www.linkedin.com/in/viviana-lopez-a2ba4421",
+    sector: "Minero",
+    respuesta: "Directorio de gerencia TI sector industrial/minero",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "BancoEstado",
+    nombre: "Denis",
+    cargo: "Gerente General BancoEstado Express",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/denis-alfredo-daroch",
+    sector: "Bancario",
+    respuesta: "Directorio gerencial bancario y financiero",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Financiera Efectiva",
+    nombre: "Juan",
+    cargo: "General Manager",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/juan-carlos-del-alc%C3%A1zar-ch%C3%A1vez-74062328",
+    sector: "Bancario",
+    respuesta: "Directorio gerencia general sector financiero",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Coopeuch",
+    nombre: "Rodrigo",
+    cargo: "Gerente general de Coopeuch",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/rodrigosilvai%C3%B1iguez",
+    sector: "Financiero",
+    respuesta: "Directorio gerencial financiero cooperativo",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Mibanco",
+    nombre: "Javier",
+    cargo: "Gerente General",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/javierichazob",
+    sector: "Financiero",
+    respuesta: "Directorio gerencia general banca",
+    accion: "Capitalizar"
+  },
+  {
+    empresa: "Cencosud Scotiabank",
+    nombre: "Eduardo",
+    cargo: "Gerente general",
+    area: "gerencial",
+    linkedin: "https://www.linkedin.com/in/eduardo-quiroga-p",
+    sector: "Financiero",
+    respuesta: "Directorio gerencial retail financiero",
+    accion: "Capitalizar"
+  }
+];
+
+function renderContacts(dataToRender) {
+  const container = document.getElementById('contacts-table-body');
+  document.getElementById('contacts-count').textContent = `Mostrando ${dataToRender.length} de ${contactsData.length} contactos`;
+  
+  if (dataToRender.length === 0) {
+    container.innerHTML = `
+      <tr>
+        <td colspan="5" class="py-12 text-center text-zinc-500 font-mono text-xs">
+          No se encontraron contactos que coincidan con la búsqueda.
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  container.innerHTML = dataToRender.map(c => `
+    <tr class="hover:bg-zinc-800/40 transition-colors">
+      <td class="p-4 align-top">
+        <div class="font-bold text-white font-montserrat text-sm">${c.empresa}</div>
+        <div class="text-zinc-400 mt-0.5">${c.nombre} • <span class="text-zinc-500">${c.cargo}</span></div>
+      </td>
+      <td class="p-4 align-top">
+        <span class="px-2.5 py-1 bg-zinc-900 border border-zinc-700 rounded text-[10px] font-mono text-brand-verde uppercase font-bold inline-block mb-1">
+          ${c.sector}
+        </span>
+        <div class="text-[10px] font-mono text-zinc-500 uppercase">Área: ${c.area}</div>
+      </td>
+      <td class="p-4 align-top">
+        <span class="px-2.5 py-1 ${c.accion === 'Capitalizar' ? 'bg-brand-verde/10 text-brand-verde border-brand-verde/30' : c.accion === 'Nutrir' ? 'bg-brand-naranja/10 text-brand-naranja border-brand-naranja/30' : 'bg-zinc-800 text-zinc-300'} border rounded text-[10px] font-mono font-bold uppercase inline-block">
+          ${c.accion}
+        </span>
+      </td>
+      <td class="p-4 align-top max-w-xs">
+        <div class="p-2.5 bg-black/40 rounded-xl border border-zinc-800/80 text-zinc-300 italic max-h-24 overflow-y-auto">
+          "${c.respuesta}"
+        </div>
+      </td>
+      <td class="p-4 align-top text-right">
+        <a href="${c.linkedin}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#0077b5] text-white font-bold text-xs rounded-lg inline-flex items-center gap-1.5 hover:bg-[#005885] transition-colors shadow-sm">
+          <i data-lucide="linkedin" class="w-3.5 h-3.5"></i> Perfil
+        </a>
+      </td>
+    </tr>
+  `).join('');
+  
+  lucide.createIcons();
+}
+
+function filterContacts() {
+  const query = document.getElementById('search-contacts').value.toLowerCase();
+  const sector = document.getElementById('filter-sector').value;
+  
+  const filtered = contactsData.filter(c => {
+    const matchesQuery = c.empresa.toLowerCase().includes(query) ||
+                         c.nombre.toLowerCase().includes(query) ||
+                         c.cargo.toLowerCase().includes(query) ||
+                         c.respuesta.toLowerCase().includes(query);
+    const matchesSector = sector === "" || c.sector === sector;
+    return matchesQuery && matchesSector;
+  });
+  
+  renderContacts(filtered);
+}
+
+// Inicializar renderizado del directorio al cargar
+document.addEventListener('DOMContentLoaded', () => {
+  renderContacts(contactsData);
+});
 
 function toggleAccordion(buttonElement) {
   const item = buttonElement.closest('.accordion-item');
